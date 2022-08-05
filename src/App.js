@@ -1,10 +1,8 @@
+import Header from "./Components/Header";
+import Layout from "./Components/Layout";
 
 function App() {
-    return(
-        <div>
-            Hello World !
-        </div>
-        )
+    return <Layout />
 }
 
 export default App;
