@@ -1,8 +1,7 @@
-import Header from "./Components/Header";
-import Layout from "./Components/Layout";
+import HomePage from "./Pages/HomePage";
 
 function App() {
-    return <Layout />
+    return <HomePage />
 }
 
 export default App;

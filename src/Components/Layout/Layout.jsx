@@ -1,17 +1,18 @@
 import React from 'react';
 import Header from '../Header';
+import Main from '../Main'
 import './style.scss';
 
-export default function Layout() {
+export default function Layout({ children }) {
   return (
     <div className='container' >
-        <Header />
+      <Header />
 
-        
-        {/* <Main>
-          {children}
-        </Main>
-        <Footer /> */}
+      <Main>
+        {children}
+      </Main>
+      
+      {/*<Footer /> */}
     </div>
   )
 }

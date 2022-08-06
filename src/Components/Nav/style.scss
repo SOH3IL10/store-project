@@ -1,0 +1,66 @@
+$grayColor: rgb(146, 146, 146);
+
+@mixin flex() {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.nav {
+  width: 90%;
+  @include flex;
+  justify-content: space-evenly;
+  margin: 1.5rem auto;
+}
+
+.navLogo {
+  width: 150px;
+}
+
+.navMenu {
+  width: 100px;
+  svg {
+    cursor: pointer;
+  }
+}
+
+.navSearch {
+  flex: 1;
+  @include flex;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  color: $grayColor;
+  input {
+    width: 100%;
+    border: none;
+    color: $grayColor;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.navSearchIcon {
+  @include flex;
+  cursor: pointer;
+}
+
+.navBasket {
+  @include flex;
+  justify-content: center;
+  padding: 0.5rem 0.8rem;
+  width: 100px;
+  svg {
+    cursor: pointer;
+    position: relative;
+  }
+}
+
+.navRegister {
+  @include flex;
+  span {
+    cursor: pointer;
+    margin: 0.5rem;
+  }
+  color: $grayColor;
+}
