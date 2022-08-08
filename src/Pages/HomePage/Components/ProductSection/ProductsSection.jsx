@@ -7,10 +7,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper";
 
-export default function ProductsSection({ title }) {
+export default function ProductsSection({ title, products }) {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
-
+    
     return (
         <div className='productsSection'>
             <div className='productTitle'>
@@ -54,15 +54,16 @@ export default function ProductsSection({ title }) {
                     modules={[Navigation]}
                     className="mySwiper"
                 >
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
-                    <SwiperSlide><Product /></SwiperSlide>
+                    {products &&
+                        products.map(product => {
+                            const rate = Number(parseFloat(product.rating.rate).toFixed(0))
+                            return(
+                                <SwiperSlide key={product.id}>
+                                    <Product product={product} rating={rate} />
+                                </SwiperSlide>
+                            )
+                        })
+                    }
                 </Swiper>
 
             </div>

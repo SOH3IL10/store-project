@@ -1,20 +1,33 @@
 import React from 'react';
 import './style.scss';
 
-export default function Product() {
+export default function Product({ product, rating }) {
+
     return (
-        <div className='product'>
-            <img src="https://m.media-amazon.com/images/I/61bX2AoGj2L._AC_SX342_.jpg" alt="" />
-            <h3><strong>Aplle MacBook Pro</strong></h3>
+        <>
+            {product &&
+                <div className='product'>
+                    <img src={product.image} alt="" />
+                    <h3><strong>{product.title}</strong></h3>
 
-            <p>Lorem recusandae quasi nobis molestiae ex placeat ducimus quae, reiciendis est facilis ab in dolorem impedit.</p>
+                    <p className='productInfo'>{product.description}</p>
 
-            <div className='priceAndStar'>
-                <p>⭐⭐⭐⭐</p>
-                <strong>$93.99</strong>
-            </div>
+                    <div className='priceAndStar'>
+                        <p>
+                            {
+                                Array(rating).fill().map((_, i) => <small key={i}>⭐</small>)
+                            }
+                        </p>
 
-            <button>Add to Basket</button>
-        </div>
+                        <p className={'productPrice'}>
+                            <small>$</small>
+                            <strong>{product.price}</strong>
+                        </p>
+                    </div>
+
+                    <button>Add to Basket</button>
+                </div>
+            }
+        </>
     )
 }

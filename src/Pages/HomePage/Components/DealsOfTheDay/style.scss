@@ -1,0 +1,68 @@
+$grayColor: rgb(146, 146, 146);
+
+.dealsOfTheDay {
+    background-image: url('https://images.unsplash.com/photo-1533113354171-490d836238e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5rem 3rem;
+    margin-bottom: 2rem;
+
+    .dealsTime {
+        color: #fff;
+        flex: 0.2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-right: 2rem;
+        h1{
+            font-size: 40px;
+        }
+        p{
+            font-size: 35px;
+            margin: 0;
+        }
+    }
+
+    .dealsProducts {
+        overflow: hidden;
+        flex: 0.8;
+        div.deals{
+            margin: 0 2rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            button.beforeBtn, button.nextBtn {
+                background-color: rgb(243, 243, 243);
+                border-radius: 50%;
+                color: $grayColor;
+                padding: 0.5rem;
+                border: none;
+                cursor: pointer;
+                margin: 0 .3rem;
+                outline: none;
+                box-shadow: 0px 0px 3px 1px #ccc;
+                position: absolute;
+                z-index: 10;
+                transition: .3s;
+                &:hover {
+                    background-color: rgba(255,255,255,100%);
+                }
+            }
+            button.beforeBtn {
+                left: -24px;
+            }
+            button.nextBtn {
+                right: -24px;
+            }
+        }
+        
+    }
+}
