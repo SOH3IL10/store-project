@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
 import { get } from '../../Services/HttpClient';
+import Brands from './Components/Brands';
 import DealsOfTheDay from './Components/DealsOfTheDay';
 import ProductsSection from './Components/ProductSection'
 
@@ -33,6 +34,8 @@ export default function HomePage() {
       <ProductsSection title={'Featured Products'} products={products} />
 
       <DealsOfTheDay products={products} />
+    
+      <Brands />
     </Layout>
   )
 }
