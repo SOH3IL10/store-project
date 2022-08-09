@@ -1,8 +1,7 @@
+@import '../../../../Mixin&Variables/Mixins.scss';
+
 .brands {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    @include flex(center, row, space-between);
     width: 80%;
     margin: 1rem auto 2rem auto;
 

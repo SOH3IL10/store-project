@@ -1,3 +1,4 @@
+@import '../../../../Mixin&Variables/Mixins.scss';
 $grayColor: rgb(146, 146, 146);
 
 .dealsOfTheDay {
@@ -5,19 +6,14 @@ $grayColor: rgb(146, 146, 146);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flex(center , row , null);
     padding: 5rem 3rem;
     margin-bottom: 2rem;
 
     .dealsTime {
+        @include flex(center , column , center);
         color: #fff;
         flex: 0.2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         text-align: center;
         margin-right: 2rem;
         h1{
@@ -34,10 +30,7 @@ $grayColor: rgb(146, 146, 146);
         flex: 0.8;
         div.deals{
             margin: 0 2rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+            @include flex(center , row , space-between);
             position: relative;
             button.beforeBtn, button.nextBtn {
                 background-color: rgb(243, 243, 243);

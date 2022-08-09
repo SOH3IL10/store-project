@@ -1,4 +1,5 @@
+@import '../../Mixin&Variables/Mixins.scss';
+
 .container {
-    display: flex;
-    flex-direction: column;
+    @include flex(null , column , null);
 }

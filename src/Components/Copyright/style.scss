@@ -1,0 +1,24 @@
+$grayColor: rgb(146, 146, 146);
+
+@import '../../Mixin&Variables/Mixins.scss';
+
+.copyright {
+    @include flex(center , column , center);
+    margin: 1rem 0;
+    p{
+        color: $grayColor;
+        font-size: small;
+    }
+    ul{
+        @include flex(center , row , null);
+        margin: 0;
+        padding: 0;
+        li {
+            list-style-type: none;
+            margin: 0 0.5rem;
+            a{
+                color: unset
+            }
+        }
+    }
+}

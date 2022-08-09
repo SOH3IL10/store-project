@@ -1,22 +1,17 @@
+@import '../../../../Mixin&Variables/Mixins.scss';
 $grayColor: rgb(146, 146, 146);
 
 .productsSection {
-    display: flex;
-    flex-direction: column;
+    @include flex(null, column, null);
     padding: 0 2rem;
     margin-bottom: 2rem;
     .productTitle {
         color: $grayColor;
         font-size: .8rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        @include flex(center, row, space-between);
         margin-bottom: 1rem;
         .productsBtn {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            @include flex(center, row , null);
             button {
                 background-color: #fff;
                 border-radius: 50%;
@@ -35,16 +30,12 @@ $grayColor: rgb(146, 146, 146);
 }
 
 .products {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex(center, null, space-between);
     overflow: hidden;
 }
 
 .product {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex(null, column, center);
     background-color: #fff;
     max-width: 400px;
     padding: 1rem 2rem;
@@ -75,9 +66,7 @@ $grayColor: rgb(146, 146, 146);
     }
 
     .priceAndStar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include flex(center, null, space-between);
         p{
             margin: 0;
         }
@@ -90,6 +79,7 @@ $grayColor: rgb(146, 146, 146);
         padding: 1rem 0;
         border-radius: 5px;
         cursor: pointer;
+        transition: 0.3s ease-in-out;
         &:hover {
             opacity: .6;
         }

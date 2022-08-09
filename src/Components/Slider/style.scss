@@ -1,8 +1,8 @@
+@import '../../Mixin&Variables/Mixins.scss';
+
 .slider {
-  display: flex;
-  flex-direction: row;
+  @include flex(null , row , center);
   // align-items: center;
-  justify-content: center;
   height: 85vh;
   overflow: hidden;
 }
@@ -19,10 +19,7 @@
   margin: 0 1rem;
 
   .content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    @include flex(flex-start, column, center);
     width: 50%;
     height: 100%;
     h1 {
@@ -40,6 +37,7 @@
       padding: 1.2rem 3rem;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s ease-in-out;
       &:hover {
         background-color: rgba(255, 255, 255, 80%);
       }

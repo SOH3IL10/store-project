@@ -1,15 +1,9 @@
 $grayColor: rgb(146, 146, 146);
-
-@mixin flex() {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
+@import '../../Mixin&Variables/Mixins.scss';
 
 .nav {
   width: 90%;
-  @include flex;
-  justify-content: space-evenly;
+  @include flex(center , row , space-evenly);
   margin: 1.5rem auto;
 }
 
@@ -26,7 +20,7 @@ $grayColor: rgb(146, 146, 146);
 
 .navSearch {
   flex: 1;
-  @include flex;
+  @include flex(center, row, null);
   background-color: #fff;
   padding: 1rem 2rem;
   color: $grayColor;
@@ -41,13 +35,12 @@ $grayColor: rgb(146, 146, 146);
 }
 
 .navSearchIcon {
-  @include flex;
+  @include flex(center, row, null);
   cursor: pointer;
 }
 
 .navBasket {
-  @include flex;
-  justify-content: center;
+  @include flex(center, row, center);
   padding: 0.5rem 0.8rem;
   width: 100px;
   svg {
@@ -57,7 +50,7 @@ $grayColor: rgb(146, 146, 146);
 }
 
 .navRegister {
-  @include flex;
+  @include flex(center, row, null);
   span {
     cursor: pointer;
     margin: 0.5rem;
