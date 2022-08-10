@@ -1,0 +1,136 @@
+$grayColor: rgb(146, 146, 146);
+
+@mixin btnHover {
+    transition: 0.2s;
+    &:hover, &:focus{
+        background-color: rgba($color: #ccc, $alpha: 0.15);
+    }
+}
+
+
+.checkoutProductsBasket {
+    display: flex;
+    flex-direction: column;
+    flex: .6;
+    margin-right: 2rem;
+    
+    h1{
+        margin: 0;
+    }
+    
+}
+
+.checkOutProducts {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.checkOutProductItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    padding: 1rem 0;
+    
+    img{
+        max-width: 100px;
+        object-fit: contain;
+    }
+
+    p.productName {
+        max-width: 300px;
+        height: 90px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        overflow: hidden;
+        word-break: break-word;
+        margin: 0;
+    }
+    
+    .productQuantity {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 4px;
+        button{
+            border: none;
+            outline: none;
+            font-weight: bold;
+            padding: .3rem 0.5rem;
+            border-radius: 5px;
+            background-color: transparent;
+            font-size: large;
+            cursor: pointer;
+            @include btnHover;
+        }
+        input{
+            width: 40px;
+            border: none;
+            outline: none;
+            padding: .3rem;
+            background-color: transparent;
+            text-align: center;
+            -moz-appearance: textfield;
+            /* Chrome, Safari, Edge, Opera */
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            }
+        }
+    }
+
+    button.removeProductBtn {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: $grayColor;
+        cursor: pointer;
+        border-radius: 5px;
+        @include btnHover;
+    }
+
+}
+
+.subTotalAndBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    button{
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 2.5rem;
+        border-radius: 50px;
+        border: 1px solid rgb(218, 218, 218);
+        outline: none;
+        background-color: transparent;
+        @include btnHover;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .subTotal{
+        line-height: 2;
+        display: flex;
+        flex-direction: column;
+        
+        p{
+            display: flex;
+            flex-direction: row;
+            width: 200px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            &:nth-child(2){
+                border-bottom: 1px solid rgb(226, 226, 226);
+            }
+            &:last-child{
+                margin-top: 1rem;
+            }
+        }
+    }
+}

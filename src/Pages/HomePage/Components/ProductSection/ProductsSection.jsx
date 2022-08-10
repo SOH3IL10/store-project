@@ -56,10 +56,9 @@ export default function ProductsSection({ title, products }) {
                 >
                     {products &&
                         products.map(product => {
-                            const rate = Number(parseFloat(product.rating.rate).toFixed(0))
                             return(
                                 <SwiperSlide key={product.id}>
-                                    <Product product={product} rating={rate} />
+                                    <Product product={product} />
                                 </SwiperSlide>
                             )
                         })

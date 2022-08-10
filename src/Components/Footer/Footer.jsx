@@ -1,12 +1,15 @@
 import './style.scss';
 import FooterItem from './FooterItem'
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
         <footer>
             <div className="footerContent">
                 <div className="footerList">
-                    <h1 className='logo'>LOGO</h1>
+                    <Link to={'/'}>
+                        <h1 className='logo'>LOGO</h1>
+                    </Link>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga corporis ex neaque nulla labor</p>
                 </div>
                 <FooterItem title={'POLICY INFO'}

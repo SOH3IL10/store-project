@@ -4,6 +4,7 @@ import { get } from '../../Services/HttpClient';
 import Brands from './Components/Brands';
 import DealsOfTheDay from './Components/DealsOfTheDay';
 import ProductsSection from './Components/ProductSection'
+import Slider from './Components/Slider';
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
@@ -27,6 +28,8 @@ export default function HomePage() {
 
   return (
     <Layout>
+      <Slider />
+
       {/* Popular Products */}
       <ProductsSection title={'Popular Products'} products={popularProducts} />
 

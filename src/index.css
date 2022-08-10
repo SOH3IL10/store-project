@@ -6,6 +6,11 @@ body {
   background-color: #F4F5F9;
 }
 
+a{
+  color: unset;
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

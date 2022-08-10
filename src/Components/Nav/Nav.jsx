@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
     return (
@@ -13,7 +14,9 @@ export default function Nav() {
                 <div className='navLogo'>
                     {/* lOGO */}
                     {/* <img src="" alt="" /> */}
-                    <h1>LOGO</h1>
+                    <Link to={'/'}>
+                        <h1>LOGO</h1>
+                    </Link>
                 </div>
 
                 <div className='navMenu'>
@@ -28,9 +31,11 @@ export default function Nav() {
                 </div>
 
                 <div className='navBasket'>
-                    <Badge badgeContent={1} color="secondary">
-                        <ShoppingCartIcon />
-                    </Badge >
+                    <Link to={'/checkout'}>
+                        <Badge badgeContent={1} color="secondary">
+                            <ShoppingCartIcon />
+                        </Badge >
+                    </Link>
                 </div>
 
                 <div className='navRegister'>

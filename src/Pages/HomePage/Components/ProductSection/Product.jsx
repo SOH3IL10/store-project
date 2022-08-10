@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.scss';
+import Rating from '@mui/material/Rating';
 
-export default function Product({ product, rating }) {
+export default function Product({ product }) {
 
     return (
         <>
@@ -13,11 +14,7 @@ export default function Product({ product, rating }) {
                     <p className='productInfo'>{product.description}</p>
 
                     <div className='priceAndStar'>
-                        <p>
-                            {
-                                Array(rating).fill().map((_, i) => <small key={i}>⭐</small>)
-                            }
-                        </p>
+                        <Rating name="half-rating-read" defaultValue={0} value={product.rating.rate} precision={0.5} size="small" readOnly />
 
                         <p className={'productPrice'}>
                             <small>$</small>
