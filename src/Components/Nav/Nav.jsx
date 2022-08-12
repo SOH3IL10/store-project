@@ -5,8 +5,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
+import { useStateContext } from '../../Context/Context';
 
 export default function Nav() {
+    const { basket } = useStateContext();
     return (
         <div>
             <nav className='nav'>
@@ -32,7 +34,7 @@ export default function Nav() {
 
                 <div className='navBasket'>
                     <Link to={'/checkout'}>
-                        <Badge badgeContent={1} color="secondary">
+                        <Badge badgeContent={basket.length} color="secondary">
                             <ShoppingCartIcon />
                         </Badge >
                     </Link>

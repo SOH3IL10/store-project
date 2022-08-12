@@ -4,3 +4,23 @@
     flex-direction: $flexDirection;
     justify-content: $justifyContent;
 }
+
+@mixin btnHover {
+    transition: 0.2s;
+    &:hover, &:focus{
+        background-color: rgba($color: #ccc, $alpha: 0.15);
+    }
+}
+
+@mixin buttonStyle {
+    @include flex(center,null,null);
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    border: 1px solid rgb(218, 218, 218);
+    outline: none;
+    background-color: transparent;
+    @include btnHover;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}

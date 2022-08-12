@@ -1,8 +1,25 @@
 import React from 'react';
 import './style.scss';
 import Rating from '@mui/material/Rating';
+import { useDispatch } from '../../../../Context/Context';
+import { actionTypes } from '../../../../Context/reducer';
 
 export default function Product({ product }) {
+
+    const dispatch = useDispatch();
+
+    function handleAddToBaskdet(){
+        dispatch({
+            type: actionTypes.ADD_TO_BASKET,
+            payload: {
+                id: product.id,
+                image: product.image,
+                title: product.title,
+                price: product.price,
+                quantity: 1
+            }
+        })
+    }
 
     return (
         <>
@@ -22,7 +39,7 @@ export default function Product({ product }) {
                         </p>
                     </div>
 
-                    <button>Add to Basket</button>
+                    <button onClick={handleAddToBaskdet}>Add to Basket</button>
                 </div>
             }
         </>

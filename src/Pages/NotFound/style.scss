@@ -1,0 +1,15 @@
+@import "../../Mixin&Variables/Mixins.scss";
+@import "../Checkout/Components/CheckoutProductsBasket/style.scss";
+
+.notFound {
+  @include flex(center, column, center);
+  margin: 1rem 0 4rem 0;
+  line-height: 1.5;
+  h1 {
+    font-size: 10rem;
+    margin: 0;
+  }
+  button {
+    @include buttonStyle;
+  }
+}

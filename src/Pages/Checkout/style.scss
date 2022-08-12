@@ -1,17 +1,8 @@
 $grayColor: rgb(146, 146, 146);
-
-@mixin btnHover {
-    transition: 0.2s;
-    &:hover, &:focus{
-        background-color: rgba($color: #ccc, $alpha: 0.15);
-    }
-}
+@import '../../Mixin&Variables/Mixins.scss';
 
 .checkout {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: center;
+    @include flex(baseline, row, center);
     width: 100%;
     margin: 3rem 0;
 }

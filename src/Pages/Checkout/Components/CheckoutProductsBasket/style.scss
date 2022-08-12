@@ -1,19 +1,10 @@
 $grayColor: rgb(146, 146, 146);
-
-@mixin btnHover {
-    transition: 0.2s;
-    &:hover, &:focus{
-        background-color: rgba($color: #ccc, $alpha: 0.15);
-    }
-}
-
+@import '../../../../Mixin&Variables/Mixins.scss';
 
 .checkoutProductsBasket {
-    display: flex;
-    flex-direction: column;
+    @include flex(null,column,null);
     flex: .6;
     margin-right: 2rem;
-    
     h1{
         margin: 0;
     }
@@ -21,16 +12,12 @@ $grayColor: rgb(146, 146, 146);
 }
 
 .checkOutProducts {
-    display: flex;
-    flex-direction: column;
+    @include flex(null,column,null);
     margin: 1rem 0;
 }
 
 .checkOutProductItem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    @include flex(center,row,space-between);
     border-bottom: 1px solid rgb(226, 226, 226);
     padding: 1rem 0;
     
@@ -42,18 +29,15 @@ $grayColor: rgb(146, 146, 146);
     p.productName {
         max-width: 300px;
         height: 90px;
-        display: flex;
+        @include flex(center,null,null);
         flex-wrap: wrap;
-        align-items: center;
         overflow: hidden;
         word-break: break-word;
         margin: 0;
     }
     
     .productQuantity {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        @include flex(center,row,null);
         border-radius: 4px;
         button{
             border: none;
@@ -66,19 +50,11 @@ $grayColor: rgb(146, 146, 146);
             cursor: pointer;
             @include btnHover;
         }
-        input{
+        strong{
             width: 40px;
-            border: none;
-            outline: none;
             padding: .3rem;
             background-color: transparent;
             text-align: center;
-            -moz-appearance: textfield;
-            /* Chrome, Safari, Edge, Opera */
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            }
         }
     }
 
@@ -95,35 +71,18 @@ $grayColor: rgb(146, 146, 146);
 }
 
 .subTotalAndBtn {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
+    @include flex(flex-end,row,space-between);
     button{
-        display: flex;
-        align-items: center;
-        padding: 0.8rem 2.5rem;
-        border-radius: 50px;
-        border: 1px solid rgb(218, 218, 218);
-        outline: none;
-        background-color: transparent;
-        @include btnHover;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 1rem;
+        @include buttonStyle;
     }
 
     .subTotal{
         line-height: 2;
-        display: flex;
-        flex-direction: column;
+        @include flex(null,column,null);
         
         p{
-            display: flex;
-            flex-direction: row;
+            @include flex(center,row,space-between);
             width: 200px;
-            justify-content: space-between;
-            align-items: center;
             margin: 0;
             &:nth-child(2){
                 border-bottom: 1px solid rgb(226, 226, 226);
@@ -132,5 +91,27 @@ $grayColor: rgb(146, 146, 146);
                 margin-top: 1rem;
             }
         }
+    }
+}
+
+.emptyBasket {
+    @include flex(center,column,center);
+    line-height: 2;
+    margin-bottom: 3rem;
+    div{
+        svg{
+            display: block;
+            // background-color: #ccc;
+            border: 3px solid #1976d2;
+            border-radius: 50%;
+            padding: 2rem;
+    
+        }
+    }
+    h2{
+        letter-spacing: 2px;
+    }
+    button{
+        @include buttonStyle;
     }
 }
