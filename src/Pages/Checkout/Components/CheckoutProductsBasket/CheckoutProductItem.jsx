@@ -1,9 +1,10 @@
 import React from 'react';
 import './style.scss'
 import ClearIcon from '@mui/icons-material/Clear';
-import { useDispatch, useStateContext } from '../../../../Context/Context';
+import { useDispatch } from '../../../../Context/Context';
 import { actionTypes } from '../../../../Context/reducer';
 import currencyFormat from '../../../../Utils/CurrencyFormat/CurrencyFormat';
+import { Link } from 'react-router-dom';
 
 export default function CheckoutProductItem({ product }) {
     const dispatch = useDispatch();
@@ -37,7 +38,9 @@ export default function CheckoutProductItem({ product }) {
         <div className="checkOutProductItem">
             <img src={product.image} alt="" />
 
-            <p className='productName'><strong>{product.title}</strong></p>
+            <Link to={`/products/${product.id}`}>
+                <p className='productName'><strong>{product.title}</strong></p>
+            </Link>
 
             <div className='productQuantity'>
                 <button onClick={decrementQualityHandler}>-</button>

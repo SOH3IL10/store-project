@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
+import Loading from '../../Components/Loading';
 import { get } from '../../Services/HttpClient';
 import Brands from './Components/Brands';
 import DealsOfTheDay from './Components/DealsOfTheDay';
@@ -11,7 +12,7 @@ export default function HomePage() {
   const [popularProducts, setPopularProducts] = useState([]);
 
   useEffect(() => {
-    get('category/electronics')
+    get()
       .then(data => setProducts(data))
   }, [])
 
@@ -27,18 +28,24 @@ export default function HomePage() {
   }
 
   return (
+
     <Layout>
-      <Slider />
+      {products.length <= 0 ? <Loading /> :
+        <>
+          <Slider />
+          {/* Papular Products */}
+          <ProductsSection title={'Popular Products'} products={popularProducts} addToBasket={true} />
 
-      {/* Popular Products */}
-      <ProductsSection title={'Popular Products'} products={popularProducts} />
+          {/* Featured Products */}
+          <ProductsSection title={'Featured Products'} products={products} addToBasket={true} />
 
-      {/* Featured Products */}
-      <ProductsSection title={'Featured Products'} products={products} />
+          <DealsOfTheDay products={products} addToBasket={true} />
 
-      <DealsOfTheDay products={products} />
-    
-      <Brands />
+          <Brands />
+        </>
+      }
     </Layout>
+
+
   )
 }

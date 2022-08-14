@@ -1,0 +1,95 @@
+@import '../../Mixin&Variables/Mixins.scss';
+$grayColor: rgb(146, 146, 146);
+
+.productsBlog {
+    @include flex(null, column, null);
+    
+}
+
+.productPost {
+    background-color: #fff;
+    @include flex(flex-start, row, space-between);
+    margin-bottom: 5rem;
+    padding: 4rem 3rem;
+    .productImg {
+        flex: 0.2;
+        align-self: center;
+        img{
+            width: 400px;
+            height: 200px;
+            object-fit: contain;
+        }
+    }
+
+    .productInfo {
+        flex: 0.7;
+        .productTitleRating {
+            border-bottom: 1px solid rgb(226, 226, 226);
+            padding: 1rem 0;
+            .rating{
+                @include flex(center, row, null);
+                
+                small{
+                    margin-left: 1rem;
+                    color: $grayColor;
+                }
+            }
+        }
+
+        .productPrice{
+            font-size: 1.5rem;
+        }
+
+        .productDescription {
+            p{
+                font-size: 14px;
+                line-height: 1.7;
+                color: rgb(119, 119, 119);
+            }
+        }
+        
+        button.addToBasketButton {
+            border: none;
+            margin-top: 3rem;
+            background-color: #F4F5F9;
+            padding: 1rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            &:hover, &:focus {
+                opacity: .6;
+            }
+            font-size: 15px;
+            font-weight: bold;
+            outline: none;
+            width: 250px;
+            @include flex(center, row, space-evenly);
+        }
+
+        .productQuantity {
+            @include flex(center,row,null);
+            border-radius: 4px;
+            button{
+                border: none;
+                outline: none;
+                font-weight: bold;
+                padding: .3rem 0.5rem;
+                border-radius: 5px;
+                background-color: transparent;
+                font-size: large;
+                cursor: pointer;
+                @include btnHover;
+            }
+            strong{
+                width: 40px;
+                padding: .3rem;
+                background-color: transparent;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.js-image-zoom__zoomed-image {
+    z-index: 999;
+}

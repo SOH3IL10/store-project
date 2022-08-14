@@ -3,12 +3,13 @@ import './style.scss';
 import Rating from '@mui/material/Rating';
 import { useDispatch } from '../../../../Context/Context';
 import { actionTypes } from '../../../../Context/reducer';
+import { Link } from 'react-router-dom';
 
-export default function Product({ product }) {
+export default function Product({ product, addToBasket }) {
 
     const dispatch = useDispatch();
 
-    function handleAddToBaskdet(){
+    function handleAddToBaskdet() {
         dispatch({
             type: actionTypes.ADD_TO_BASKET,
             payload: {
@@ -26,7 +27,9 @@ export default function Product({ product }) {
             {product &&
                 <div className='product'>
                     <img src={product.image} alt="" />
-                    <h3><strong>{product.title}</strong></h3>
+                    <Link to={`/products/${product.id}`}>
+                        <h3><strong>{product.title}</strong></h3>
+                    </Link>
 
                     <p className='productInfo'>{product.description}</p>
 
@@ -39,7 +42,9 @@ export default function Product({ product }) {
                         </p>
                     </div>
 
-                    <button onClick={handleAddToBaskdet}>Add to Basket</button>
+                    {
+                        addToBasket && <button onClick={handleAddToBaskdet}>Add to Basket</button>
+                    }
                 </div>
             }
         </>

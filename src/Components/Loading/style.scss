@@ -1,0 +1,12 @@
+@import '../../Mixin&Variables/Mixins.scss';
+
+.loading{
+    @include flex(center, row, center);
+    margin: 10rem 0;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // background-color: #F4F5F9;
+}
