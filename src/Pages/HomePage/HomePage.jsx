@@ -6,26 +6,35 @@ import Brands from './Components/Brands';
 import DealsOfTheDay from './Components/DealsOfTheDay';
 import ProductsSection from './Components/ProductSection'
 import Slider from './Components/Slider';
+import { useUserData } from '@nhost/react';
+import { useDispatch } from '../../Context/Context';
+import { actionTypes } from '../../Context/reducer';
+import { sortByStar } from '../../Utils/SortFunctions/SortFunctions';
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
 
+  const user = useUserData();
+  const dispatch = useDispatch();
+
+  if (user) {
+    dispatch({
+      type: actionTypes.SET_USER,
+      payload: {
+        user: user
+      }
+    })
+  }
+
   useEffect(() => {
-    get()
+    get('?limit=10')
       .then(data => setProducts(data))
   }, [])
 
   useEffect(() => {
-    sortedByStar()
+    setPopularProducts(sortByStar(products))
   }, [products])
-
-  function sortedByStar() {
-    const productsCopy = [...products];
-    productsCopy.sort((a, b) => parseFloat(b.rating.rate) - parseFloat(a.rating.rate))
-
-    setPopularProducts(productsCopy);
-  }
 
   return (
 

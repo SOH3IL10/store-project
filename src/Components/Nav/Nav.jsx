@@ -1,14 +1,16 @@
 import React from 'react'
 import './style.scss';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
 import { useStateContext } from '../../Context/Context';
+import ProfileSection from './Components/ProfileSection';
+import MenuDrawer from './Components/MenuDrawer';
 
 export default function Nav() {
     const { basket } = useStateContext();
+
     return (
         <div>
             <nav className='nav'>
@@ -21,9 +23,7 @@ export default function Nav() {
                     </Link>
                 </div>
 
-                <div className='navMenu'>
-                    <MenuIcon />
-                </div>
+                <MenuDrawer />
 
                 <div className='navSearch'>
                     <input type="text" placeholder='Search products & trands' />
@@ -40,9 +40,7 @@ export default function Nav() {
                     </Link>
                 </div>
 
-                <div className='navRegister'>
-                    <span>Sign Up</span> / <span>Login</span>
-                </div>
+                <ProfileSection />
             </nav>
         </div>
     )

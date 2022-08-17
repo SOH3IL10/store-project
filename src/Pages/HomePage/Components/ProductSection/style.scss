@@ -42,6 +42,7 @@ $grayColor: rgb(146, 146, 146);
     box-shadow: 0px 0px 16px -2px rgb(187 187 187 / 75%);
     border-radius: 5px;
     text-align: center;
+    margin-bottom: 1rem;
 
     img{
         object-fit: contain;
@@ -49,43 +50,49 @@ $grayColor: rgb(146, 146, 146);
         height: 150px;
     }
 
-    h3 {
-        margin: 0;
-        color: #000;
-        max-height: 20px;
-        overflow: hidden;
-        margin-top: 1rem;
-    }
-
-    .productInfo {
-        color: $grayColor;
-        max-height: 50px;
-        overflow: hidden;
-        font-size: 13px;
-        line-height: 1.4;
-    }
-
-    .priceAndStar {
-        @include flex(center, null, space-between);
-        p{
+    .productDetail {
+        @include flex(null, column, center);
+    
+        h3 {
             margin: 0;
+            color: #000;
+            max-height: 20px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+    
+        .productInfo {
+            color: $grayColor;
+            max-height: 50px;
+            overflow: hidden;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+    
+        .priceAndStar {
+            @include flex(center, null, space-between);
+            p{
+                margin: 0;
+            }
+        }
+    
+        button {
+            border: none;
+            margin-top: 1rem;
+            background-color: #F4F5F9;
+            padding: 1rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            &:hover {
+                opacity: .6;
+            }
+            font-size: 15px;
+            font-weight: bold;
+            outline: none;
         }
     }
 
-    button {
-        border: none;
-        margin-top: 1rem;
-        background-color: #F4F5F9;
-        padding: 1rem 0;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s ease-in-out;
-        &:hover {
-            opacity: .6;
-        }
-        font-size: 15px;
-        font-weight: bold;
-        outline: none;
-    }
+    
 }
 

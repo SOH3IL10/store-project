@@ -5,7 +5,7 @@ import { useDispatch } from '../../../../Context/Context';
 import { actionTypes } from '../../../../Context/reducer';
 import { Link } from 'react-router-dom';
 
-export default function Product({ product, addToBasket }) {
+export default function Product({ product, addToBasket, classNameProps }) {
 
     const dispatch = useDispatch();
 
@@ -25,26 +25,29 @@ export default function Product({ product, addToBasket }) {
     return (
         <>
             {product &&
-                <div className='product'>
+                <div className={classNameProps ? `${classNameProps} product` : 'product'}>
                     <img src={product.image} alt="" />
-                    <Link to={`/products/${product.id}`}>
-                        <h3><strong>{product.title}</strong></h3>
-                    </Link>
 
-                    <p className='productInfo'>{product.description}</p>
+                    <div className='productDetail'>
+                        <Link to={`/products/${product.id}`}>
+                            <h3><strong>{product.title}</strong></h3>
+                        </Link>
 
-                    <div className='priceAndStar'>
-                        <Rating name="half-rating-read" defaultValue={0} value={product.rating.rate} precision={0.5} size="small" readOnly />
+                        <p className='productInfo'>{product.description}</p>
 
-                        <p className={'productPrice'}>
-                            <small>$</small>
-                            <strong>{product.price}</strong>
-                        </p>
+                        <div className='priceAndStar'>
+                            <Rating name="half-rating-read" defaultValue={0} value={product.rating.rate} precision={0.5} size="small" readOnly />
+
+                            <p className={'productPrice'}>
+                                <small>$</small>
+                                <strong>{product.price}</strong>
+                            </p>
+                        </div>
+
+                        {
+                            addToBasket && <button onClick={handleAddToBaskdet}>Add to Basket</button>
+                        }
                     </div>
-
-                    {
-                        addToBasket && <button onClick={handleAddToBaskdet}>Add to Basket</button>
-                    }
                 </div>
             }
         </>
