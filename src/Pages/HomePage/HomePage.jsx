@@ -6,26 +6,11 @@ import Brands from './Components/Brands';
 import DealsOfTheDay from './Components/DealsOfTheDay';
 import ProductsSection from './Components/ProductSection'
 import Slider from './Components/Slider';
-import { useUserData } from '@nhost/react';
-import { useDispatch } from '../../Context/Context';
-import { actionTypes } from '../../Context/reducer';
 import { sortByStar } from '../../Utils/SortFunctions/SortFunctions';
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
-
-  const user = useUserData();
-  const dispatch = useDispatch();
-
-  if (user) {
-    dispatch({
-      type: actionTypes.SET_USER,
-      payload: {
-        user: user
-      }
-    })
-  }
 
   useEffect(() => {
     get('?limit=10')
@@ -37,7 +22,6 @@ export default function HomePage() {
   }, [products])
 
   return (
-
     <Layout>
       {products.length <= 0 ? <Loading /> :
         <>
@@ -54,7 +38,5 @@ export default function HomePage() {
         </>
       }
     </Layout>
-
-
   )
 }

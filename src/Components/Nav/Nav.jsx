@@ -1,12 +1,12 @@
 import React from 'react'
 import './style.scss';
-import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
 import { useStateContext } from '../../Context/Context';
 import ProfileSection from './Components/ProfileSection';
 import MenuDrawer from './Components/MenuDrawer';
+import SearchBox from './Components/SearchBox';
 
 export default function Nav() {
     const { basket } = useStateContext();
@@ -25,12 +25,7 @@ export default function Nav() {
 
                 <MenuDrawer />
 
-                <div className='navSearch'>
-                    <input type="text" placeholder='Search products & trands' />
-                    <div className='navSearchIcon'>
-                        <SearchIcon />
-                    </div>
-                </div>
+                <SearchBox />
 
                 <div className='navBasket'>
                     <Link to={'/checkout'}>

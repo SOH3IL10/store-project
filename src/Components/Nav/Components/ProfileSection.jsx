@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import '../style.scss';
 import { useSignOut } from '@nhost/react';
 import { useAuthenticationStatus } from '@nhost/react'
@@ -15,10 +15,13 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import { useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function ProfileSection() {
     const { isAuthenticated, isLoading } = useAuthenticationStatus();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [isLogin, setIsLogin] = useState(false);
 
     const { signOut } = useSignOut()
     const dispatch = useDispatch();
@@ -40,11 +43,17 @@ export default function ProfileSection() {
         setAnchorEl(null);
     };
 
+    useLayoutEffect(() => {
+        if(isAuthenticated)
+            setIsLogin(true)
+        else setIsLogin(false);
+    },[isAuthenticated])
+
     return (
         <>
             <div className='navRegister'>
-                {
-                    !isAuthenticated ?
+                { isLoading ? <CircularProgress color={'inherit'} size={'1.5rem'} />  :
+                    !isLogin ?
                         <Link to='/register'>
                             <span>Sign Up / Login</span>
                         </Link> : <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
