@@ -6,7 +6,7 @@ import { get } from '../../../Services/HttpClient';
 import SearchResultItems from './SearchResultItems';
 import ClearIcon from '@mui/icons-material/Clear';
 
-export default function SearchBox() {
+export default function SearchBox({theme}) {
     const [value, setValue] = useState('');
     const [products, setProducts] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -36,7 +36,7 @@ export default function SearchBox() {
 
     return (
         <>
-            <div className='navSearch'>
+            <div className={theme=== 'dark' ? 'backgroundDark navSearch' : 'navSearch'}>
                 <input type="text" placeholder='Search products & trands' value={value} onChange={(e) => setValue(e.target.value) } />
                 <div className='navSearchIcon'>
                     {value.length > 0 ? <ClearIcon onClick={() => setValue('')} /> : <SearchIcon />}
@@ -44,7 +44,7 @@ export default function SearchBox() {
             </div>
             {
                 filteredData.length > 0 &&
-                <div className='searchResult'>
+                <div className={theme === 'dark' ? 'backgroundDark boxShadowDark searchResult' : 'searchResult'}>
                     {
                         filteredData.map(item => <SearchResultItems key={item.id} resultData={item} />)
                     }

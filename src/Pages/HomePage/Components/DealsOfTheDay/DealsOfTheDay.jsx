@@ -8,7 +8,7 @@ import "swiper/css";
 import { Navigation } from "swiper";
 import useCounterDown from '../../../../Utils/CounterDown/CounterDown';
 
-export default function DealsOfTheDay({ products }) {
+export default function DealsOfTheDay({ products, addToBasket, theme }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -23,8 +23,8 @@ export default function DealsOfTheDay({ products }) {
 
       <div className='dealsProducts'>
         <div className='deals'>
-          <button ref={prevRef} className='beforeBtn'><NavigateBeforeIcon /></button>
-          <button ref={nextRef} className='nextBtn'><NavigateNextIcon /></button>
+          <button className={theme === 'dark' ? 'buttonDark boxShadowDark beforeBtn' : 'beforeBtn'} ref={prevRef} ><NavigateBeforeIcon /></button>
+          <button className={theme === 'dark' ? 'buttonDark nextBtn boxShadowDark' : 'nextBtn'} ref={nextRef} ><NavigateNextIcon /></button>
 
           <Swiper
             onInit={(swiper) => {
@@ -57,10 +57,9 @@ export default function DealsOfTheDay({ products }) {
           >
             {
               products?.map(product => {
-                const rate = Number(parseFloat(product.rating.rate).toFixed(0))
                 return (
                   <SwiperSlide key={product.id}>
-                    <Product product={product} rating={rate} />
+                    <Product product={product} addToBasket={addToBasket} theme={theme} />
                   </SwiperSlide>
                 )
               })

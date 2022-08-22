@@ -1,11 +1,14 @@
 import './style.scss';
 import FooterItem from './FooterItem'
 import { Link } from 'react-router-dom';
+import { useStateContext } from '../../Context/Context'
 
 export default function Footer() {
+    const { theme } = useStateContext();
+
     return (
-        <footer>
-            <div className="footerContent">
+        <footer className={theme === 'dark' ? "backgroundDark" : undefined}>
+            <div className='footerContent'>
                 <div className="footerList">
                     <Link to={'/'}>
                         <h1 className='logo'>LOGO</h1>
@@ -44,7 +47,7 @@ export default function Footer() {
 
                 <div className="footerList">
                     <h3 className="footerItemTitle">SUBSCRIBE</h3>
-                    <div className='subscribe'>
+                    <div className={theme === 'dark' ? 'boxShadowDark subscribe' : 'subscribe'}>
                         <input type="email" placeholder='Your email Address' />
                         <button>Submit</button>
                     </div>

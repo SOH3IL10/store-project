@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: "acumin-pro","Acumin Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F4F5F9;
+}
+
+.dark-theme {
+  background-color: #222831 !important;
+  color: #EEEEEE;
+}
+
+a{
+  color: unset;
+  text-decoration: none;
+}
+
+.backgroundDark {
+  background-color: #393E46 !important;
+  color: #fff !important;
+  h2,h3,h4,h5,h6 {
+    color: #fff !important;
+  }
+}
+
+.boxShadowDark {
+  box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 75%) !important; 
+}
+
+.colorDark {
+  color: #fff !important;
+}
+
+.spanDark {
+  svg {
+    color: #ccc !important;
+  }
+}
+
+.buttonDark {
+  background-color: #00ADB5 !important;
+  color: #fff !important;
+  transition: .2s ease-in-out;
+  &:hover {
+    opacity: .8 ;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

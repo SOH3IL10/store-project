@@ -7,10 +7,12 @@ import { useStateContext } from '../../Context/Context';
 import ProfileSection from './Components/ProfileSection';
 import MenuDrawer from './Components/MenuDrawer';
 import SearchBox from './Components/SearchBox';
+import ChangeTheme from './Components/ChangeTheme';
 
 export default function Nav() {
-    const { basket } = useStateContext();
+    const { basket, theme } = useStateContext();
 
+    
     return (
         <div>
             <nav className='nav'>
@@ -25,7 +27,7 @@ export default function Nav() {
 
                 <MenuDrawer />
 
-                <SearchBox />
+                <SearchBox theme={theme} />
 
                 <div className='navBasket'>
                     <Link to={'/checkout'}>
@@ -34,6 +36,8 @@ export default function Nav() {
                         </Badge >
                     </Link>
                 </div>
+
+                <ChangeTheme theme={theme} />
 
                 <ProfileSection />
             </nav>

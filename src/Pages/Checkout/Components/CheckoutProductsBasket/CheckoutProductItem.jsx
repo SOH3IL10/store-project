@@ -6,7 +6,7 @@ import { actionTypes } from '../../../../Context/reducer';
 import currencyFormat from '../../../../Utils/CurrencyFormat/CurrencyFormat';
 import { Link } from 'react-router-dom';
 
-export default function CheckoutProductItem({ product }) {
+export default function CheckoutProductItem({ product, theme }) {
     const dispatch = useDispatch();
 
     function handleRemoveItemFromBasket() {
@@ -43,9 +43,9 @@ export default function CheckoutProductItem({ product }) {
             </Link>
 
             <div className='productQuantity'>
-                <button onClick={decrementQualityHandler}>-</button>
+                <button className={theme=== 'dark' ? 'colorDark' : undefined} onClick={decrementQualityHandler}>-</button>
                 <strong>{product.quantity}</strong>
-                <button onClick={incrementQualityHandler}>+</button>
+                <button className={theme=== 'dark' ? 'colorDark' : undefined} onClick={incrementQualityHandler}>+</button>
             </div>
 
             <div className="productPrice">

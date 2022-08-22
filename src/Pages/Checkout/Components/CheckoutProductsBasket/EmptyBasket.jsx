@@ -3,7 +3,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { Link } from 'react-router-dom'
 
-export default function EmptyBasket() {
+export default function EmptyBasket({theme}) {
     return (
         <div className='emptyBasket'>
             <div>
@@ -13,7 +13,7 @@ export default function EmptyBasket() {
                 YOUR BASKET IS EMPTY. LET'S CHANGE THAT!
             </h2>
             <Link to='/' >
-                <button> <NavigateBeforeIcon /> Back to Shop</button>
+                <button className={theme === 'dark' ? 'colorDark' : undefined}> <NavigateBeforeIcon /> Back to Shop</button>
             </Link>
         </div>
     )

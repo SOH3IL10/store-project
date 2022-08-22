@@ -17,6 +17,8 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export default function ProfileSection() {
     const { isAuthenticated, isLoading } = useAuthenticationStatus();
@@ -25,7 +27,7 @@ export default function ProfileSection() {
 
     const { signOut } = useSignOut()
     const dispatch = useDispatch();
-    const { user } = useStateContext();
+    const { user, theme } = useStateContext();
 
     function handleLogOut() {
         signOut();
@@ -44,15 +46,24 @@ export default function ProfileSection() {
     };
 
     useLayoutEffect(() => {
-        if(isAuthenticated)
+        if (isAuthenticated)
             setIsLogin(true)
         else setIsLogin(false);
-    },[isAuthenticated])
+    }, [isAuthenticated])
+
+    const handleChangeTheme = () => {
+        theme === 'light' ?
+            dispatch({
+                type: actionTypes.SET_DARK_MODE
+            }) : dispatch({
+                type: actionTypes.SET_LIGHT_MODE
+            })
+    }
 
     return (
         <>
             <div className='navRegister'>
-                { isLoading ? <CircularProgress color={'inherit'} size={'1.5rem'} />  :
+                {isLoading ? <CircularProgress color={'inherit'} size={'1.5rem'} /> :
                     !isLogin ?
                         <Link to='/register'>
                             <span>Sign Up / Login</span>
@@ -118,6 +129,23 @@ export default function ProfileSection() {
                     <Avatar /> My account
                 </MenuItem>
                 <Divider />
+                <MenuItem onClick={handleChangeTheme}>
+                    {theme === 'dark' ?
+                        <>
+                            <ListItemIcon>
+                                <LightModeIcon fontSize="small" />
+                            </ListItemIcon>
+                            Light Mode
+                        </> :
+                        <>
+                            <ListItemIcon>
+                                <DarkModeIcon fontSize="small" />
+                            </ListItemIcon>
+                            Dark Mode
+                        </>
+                    }
+
+                </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
                         <Settings fontSize="small" />

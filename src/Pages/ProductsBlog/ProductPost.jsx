@@ -7,7 +7,7 @@ import { actionTypes } from '../../Context/reducer';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-export default function ProductPost({ product }) {
+export default function ProductPost({ product, theme }) {
     const props = { width: 400, height: 200, scale: 1.5, offset: { vertical: 0, horizontal: 20 } };
 
     const dispatch = useDispatch();
@@ -65,7 +65,7 @@ export default function ProductPost({ product }) {
         <>
             {
                 product &&
-                <div className='productPost'>
+                <div className={theme === 'dark' ? 'backgroundDark productPost' : 'productPost'}>
                     <div className='productImg'>
                         <ReactImageZoom img={product.image} {...props}/>
                         {/* <img src={product.image} alt={product.title} /> */}
@@ -86,16 +86,16 @@ export default function ProductPost({ product }) {
 
                         <div className="productDescription">
                             <h3>Product Description</h3>
-                            <p>{product.description}</p>
+                            <p style={{color: theme === 'dark' && '#c9c9c9'}}>{product.description}</p>
                         </div>
 
                         {
                             changeButtons ?
                                 <div className='productQuantity'>
-                                    <button onClick={decrementQualityHandler}>-</button>
+                                    <button className={theme === 'dark' && 'colorDark'} onClick={decrementQualityHandler}>-</button>
                                     <strong>{productQuantity}</strong>
-                                    <button onClick={incrementQualityHandler}>+</button>
-                                </div> : <button className='addToBasketButton' onClick={handleAddToBaskdet}>Add to Basket <ShoppingCartIcon /></button>
+                                    <button className={theme === 'dark' && 'colorDark'} onClick={incrementQualityHandler}>+</button>
+                                </div> : <button className={theme === 'dark' ? 'buttonDark addToBasketButton' : 'addToBasketButton'} onClick={handleAddToBaskdet}>Add to Basket <ShoppingCartIcon /></button>
                         }
 
 

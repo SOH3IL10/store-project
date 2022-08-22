@@ -15,16 +15,16 @@
         @include flex(center, row, null);
         svg {
             font-size: 1.8rem;
-            color: rgba(0, 0, 0, 0.54);
             transition: color 0.2s ease-in-out;
             cursor: pointer;
             margin-right: .5rem;
+            opacity: 0.6;
             &:hover {
-                color: #000;
+                opacity: 1;
             }
         }
         .activDisplay{
-            color: #000;
+            opacity: 1;
         }
     }
 }

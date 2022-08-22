@@ -8,15 +8,9 @@ import "swiper/css";
 import { Navigation } from "swiper";
 import Loading from '../../../../Components/Loading';
 
-export default function ProductsSection({ title, products, addToBasket }) {
+export default function ProductsSection({ title, products, addToBasket, theme }) {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
-    // const [slidesPerView, setSlidesPerView] = useState(5);
-
-    // useEffect(() => {
-    //     if(products.length > 0 && products.length < 5)
-    //         setSlidesPerView(products.length)
-    // },[products.length])
 
     return (
         <>
@@ -26,8 +20,8 @@ export default function ProductsSection({ title, products, addToBasket }) {
                         <div className='productTitle'>
                             <h1>{title}</h1>
                             <div className='productsBtn' >
-                                <button ref={prevRef}><NavigateBeforeIcon /></button>
-                                <button ref={nextRef}><NavigateNextIcon /></button>
+                                <button className={theme === 'dark' && 'buttonDark'} ref={prevRef}><NavigateBeforeIcon /></button>
+                                <button className={theme === 'dark' && 'buttonDark'} ref={nextRef}><NavigateNextIcon /></button>
                             </div>
                         </div>
                         <div className='products'>
@@ -68,7 +62,7 @@ export default function ProductsSection({ title, products, addToBasket }) {
                                     products.map(product => {
                                         return (
                                             <SwiperSlide key={product.id}>
-                                                <Product product={product} addToBasket={addToBasket} />
+                                                <Product product={product} addToBasket={addToBasket} theme={theme} />
                                             </SwiperSlide>
                                         )
                                     })

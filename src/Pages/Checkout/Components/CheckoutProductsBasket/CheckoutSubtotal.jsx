@@ -4,13 +4,13 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { Link } from 'react-router-dom';
 import currencyFormat  from '../../../../Utils/CurrencyFormat/CurrencyFormat';
 
-export default function CheckoutSubtotal({ products }) {
+export default function CheckoutSubtotal({ products, theme }) {
     const total = products.reduce((amount , item ) => amount + item.price * item.quantity , 0)
 
     return (
         <div className="subTotalAndBtn">
             <Link to={'/'}>
-                <button><NavigateBeforeIcon /> Continue Shoping</button>
+                <button className={theme === 'dark' && 'colorDark'}><NavigateBeforeIcon /> Continue Shoping</button>
             </Link>
 
             <div className='subTotal' >

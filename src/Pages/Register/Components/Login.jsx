@@ -9,7 +9,7 @@ import { useSignInEmailPassword } from '@nhost/react'
 import { Link, Navigate } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function Login({ changeForm, handleChangeForm }) {
+export default function Login({ changeForm, handleChangeForm, theme }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -26,9 +26,9 @@ export default function Login({ changeForm, handleChangeForm }) {
     }
 
     const disableForm = isLoading || needsEmailVerification
-
+    
     return (
-        <div className={!changeForm ? 'login active' : 'login'} >
+        <div className={!changeForm ? ( theme==='dark' ? 'backgroundDark boxShadowDark login active' : 'login active') : ( theme==='dark-theme' ? 'backgroundDark boxShadowDark login' : 'login') } >
             <h2 className="title">Login</h2>
             <form onSubmit={handleOnSubmit} >
                 <FormControl variant="standard" className='input'>
@@ -53,7 +53,7 @@ export default function Login({ changeForm, handleChangeForm }) {
                         placeholder='Confirm a password'
                         startAdornment={
                             <InputAdornment position="start">
-                                <LockOutlinedIcon />
+                                <LockOutlinedIcon  />
                             </InputAdornment>
                         }
                     />

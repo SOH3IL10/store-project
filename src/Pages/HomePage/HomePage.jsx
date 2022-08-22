@@ -7,10 +7,12 @@ import DealsOfTheDay from './Components/DealsOfTheDay';
 import ProductsSection from './Components/ProductSection'
 import Slider from './Components/Slider';
 import { sortByStar } from '../../Utils/SortFunctions/SortFunctions';
+import { useStateContext } from '../../Context/Context';
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
+  const {theme} = useStateContext();
 
   useEffect(() => {
     get('?limit=10')
@@ -27,12 +29,12 @@ export default function HomePage() {
         <>
           <Slider />
           {/* Papular Products */}
-          <ProductsSection title={'Popular Products'} products={popularProducts} addToBasket={true} />
+          <ProductsSection title={'Popular Products'} products={popularProducts} addToBasket={true} theme={theme} />
 
           {/* Featured Products */}
-          <ProductsSection title={'Featured Products'} products={products} addToBasket={true} />
+          <ProductsSection title={'Featured Products'} products={products} addToBasket={true} theme={theme} />
 
-          <DealsOfTheDay products={products} addToBasket={true} />
+          <DealsOfTheDay products={products} addToBasket={false} theme={theme} />
 
           <Brands />
         </>

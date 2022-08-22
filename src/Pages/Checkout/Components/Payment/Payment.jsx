@@ -5,7 +5,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 
-export default function Payment() {
+export default function Payment({theme}) {
     const [value, setValue] = useState('creditCard');
 
     const handleChange = (event) => {
@@ -13,7 +13,7 @@ export default function Payment() {
     };
 
     return (
-        <aside className='checkoutPayment'>
+        <aside className={theme === 'dark' ? 'backgroundDark boxShadowDark checkoutPayment' : 'checkoutPayment'}>
             <h1>Your almost there!</h1>
             <form>
                 <div className='paymentMethod'>
@@ -42,7 +42,7 @@ export default function Payment() {
                 <div className="privacyCardInfo">
                     <div className="cardExp">
                         <small>Expiration Date:</small>
-                        <input type="month" />
+                        <input className={theme === 'dark' && 'colorDark'} type="month" />
                     </div>
 
                     <div className="cardCvv">

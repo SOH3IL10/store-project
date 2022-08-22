@@ -5,7 +5,7 @@ import { useDispatch } from '../../../../Context/Context';
 import { actionTypes } from '../../../../Context/reducer';
 import { Link } from 'react-router-dom';
 
-export default function Product({ product, addToBasket, classNameProps }) {
+export default function Product({ product, addToBasket, classNameProps, theme }) {
 
     const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ export default function Product({ product, addToBasket, classNameProps }) {
     return (
         <>
             {product &&
-                <div className={classNameProps ? `${classNameProps} product` : 'product'}>
+                <div className={theme === 'dark' ? `backgroundDark boxShadowDark product ${classNameProps}` : `product ${classNameProps}`}>
                     <img src={product.image} alt="" />
 
                     <div className='productDetail'>
@@ -45,7 +45,7 @@ export default function Product({ product, addToBasket, classNameProps }) {
                         </div>
 
                         {
-                            addToBasket && <button onClick={handleAddToBaskdet}>Add to Basket</button>
+                            addToBasket && <button className={theme === 'dark' && 'buttonDark'} onClick={handleAddToBaskdet}>Add to Basket</button>
                         }
                     </div>
                 </div>

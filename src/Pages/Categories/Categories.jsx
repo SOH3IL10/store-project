@@ -7,14 +7,16 @@ import Product from '../HomePage/Components/ProductSection/Product';
 import { get } from '../../Services/HttpClient'
 import { sortByNameA_Z, sortByNameZ_A, sortByPriceHigh_Low, sortByPriceLow_High, sortByStar } from '../../Utils/SortFunctions/SortFunctions';
 import Loading from '../../Components/Loading';
+import { useStateContext } from '../../Context/Context';
 
 export default function Categories() {
-    const params = useParams()
+    const params = useParams();
     const [filter, setFilter] = useState('newest');
     const [displayDirection, setDisplayDirection] = useState(true);
     const [products, setProducts] = useState([]);
     const [newest, setNewest] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { theme } = useStateContext();
 
     const handleChange = (event) => {
         setFilter(event.target.value);
@@ -39,7 +41,7 @@ export default function Categories() {
                     setLoading(false);
                 })
         }
-    }, [params])
+    }, [params.category])
 
     useEffect(() => {
         switch (filter) {
@@ -70,12 +72,12 @@ export default function Categories() {
     return (
         <Layout>
             <div className='categories'>
-                <FilterTools displayDirection={displayDirection} setDisplayDirection={setDisplayDirection} handleChange={handleChange} filter={filter} />
+                <FilterTools theme={theme} displayDirection={displayDirection} setDisplayDirection={setDisplayDirection} handleChange={handleChange} filter={filter} />
                 {
                     loading ? <Loading /> :
                         <div className={displayDirection ? "categoriesItem" : 'displayColumn'}>
                             {products &&
-                                products.map(product => <Product key={product.id} classNameProps={'categoryItem'} addToBasket={true} product={product} />)
+                                products.map(product => <Product key={product.id} theme={theme} classNameProps={'categoryItem'} addToBasket={true} product={product} />)
                             }
                         </div>
                 }

@@ -6,9 +6,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function FilterTools({displayDirection, setDisplayDirection, handleChange, filter}) {
+export default function FilterTools({theme, displayDirection, setDisplayDirection, handleChange, filter}) {
     return (
-        <div className='filterTools'>
+        <div className={theme === 'dark' ? 'backgroundDark filterTools' : 'filterTools'}>
             <div className="itemsDisplay">
                 <AppsIcon onClick={() => setDisplayDirection(true)} className={`${displayDirection && 'activDisplay'}`} />
                 <FormatListBulletedIcon onClick={() => setDisplayDirection(false)} className={`${!displayDirection && 'activDisplay'}`} />

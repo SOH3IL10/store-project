@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './style.scss';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useEffect } from 'react';
+import { useStateContext } from '../../Context/Context'
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
+  const { theme } = useStateContext()
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -23,7 +25,7 @@ export default function ScrollToTop() {
   window.addEventListener('scroll', toggleVisible);
 
   return (
-    <div onClick={handleScrollToTop} className={visible ? 'scrollToTop activeScrollToTop' : 'scrollToTop'}>
+    <div onClick={handleScrollToTop} className={visible ? `${theme === 'dark' && 'buttonDark boxShadowDark'} scrollToTop activeScrollToTop` : `${theme === 'dark' && 'buttonDark boxShadowDark'} scrollToTop`}>
       <KeyboardArrowUpIcon />
     </div>
   )

@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function SignUp({ changeForm, handleChangeForm }) {
+export default function SignUp({ changeForm, handleChangeForm, theme }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -36,7 +36,7 @@ export default function SignUp({ changeForm, handleChangeForm }) {
     const disableForm = isLoading || needsEmailVerification
 
     return (
-        <div className={changeForm ? 'signup active' : 'signup'}>
+        <div className={changeForm ? ( theme==='dark' ? 'backgroundDark boxShadowDark signup active' : 'signup active') : ( theme==='dark-theme' ? 'backgroundDark boxShadowDark signup' : 'signup') }>
             <h2 className="title">Registration</h2>
             <form onSubmit={handleOnSubmit}>
                 <FormControl variant="standard" className='input'>

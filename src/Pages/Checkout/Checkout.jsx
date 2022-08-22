@@ -7,16 +7,16 @@ import EmptyBasket from './Components/CheckoutProductsBasket/EmptyBasket'
 import { useStateContext } from '../../Context/Context'
 
 export default function Checkout() {
-    const { basket } = useStateContext();
+    const { basket, theme } = useStateContext();
 
     return (
         <Layout>
             <div className='checkout'>
                 {
-                    basket.length <= 0 ? <EmptyBasket /> :
+                    basket.length <= 0 ? <EmptyBasket theme={theme} /> :
                         <>
-                            <CheckoutProductsBasket basket={basket} />
-                            <Payment />
+                            <CheckoutProductsBasket basket={basket} theme={theme} />
+                            <Payment theme={theme} />
                         </>
                 }
             </div>

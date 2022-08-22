@@ -3,7 +3,7 @@
 .scrollToTop {
     @include flex(center, row, center);
     position: fixed;
-    opacity: 0;
+    opacity: 0 !important;
     padding: 0.5rem;
     bottom: 30px;
     right: 20px;
@@ -20,6 +20,6 @@
 }
 
 .activeScrollToTop {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
