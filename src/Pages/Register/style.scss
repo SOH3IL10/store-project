@@ -6,10 +6,12 @@
 }
 
 .login,
-.signup {
+.signup,
+.resetPassword,
+.changePassword {
   transition: 0.5s ease-in-out;
   background-color: #fff;
-  display: none;
+  @include flex(start, column, null);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0px 0px 16px -2px rgb(187 187 187 / 75%);
@@ -95,7 +97,7 @@
   @include flex(start, column, null);
 }
 
-.signupError {
+.error {
   font-size: small;
   color: red;
 }

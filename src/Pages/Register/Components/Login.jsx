@@ -8,10 +8,12 @@ import FormControl from '@mui/material/FormControl';
 import { useSignInEmailPassword } from '@nhost/react'
 import { Link, Navigate } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
+import { useStateContext } from '../../../Context/Context';
 
-export default function Login({ changeForm, handleChangeForm, theme }) {
+export default function Login() {
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('');
+    const { theme } = useStateContext();
 
     const { signInEmailPassword, isLoading, isSuccess, needsEmailVerification, isError, error } =
         useSignInEmailPassword()
@@ -26,9 +28,9 @@ export default function Login({ changeForm, handleChangeForm, theme }) {
     }
 
     const disableForm = isLoading || needsEmailVerification
-    
+
     return (
-        <div className={!changeForm ? ( theme==='dark' ? 'backgroundDark boxShadowDark login active' : 'login active') : ( theme==='dark-theme' ? 'backgroundDark boxShadowDark login' : 'login') } >
+        <div className={theme === 'dark' ? 'backgroundDark boxShadowDark login' : 'login'} >
             <h2 className="title">Login</h2>
             <form onSubmit={handleOnSubmit} >
                 <FormControl variant="standard" className='input'>
@@ -53,7 +55,7 @@ export default function Login({ changeForm, handleChangeForm, theme }) {
                         placeholder='Confirm a password'
                         startAdornment={
                             <InputAdornment position="start">
-                                <LockOutlinedIcon  />
+                                <LockOutlinedIcon />
                             </InputAdornment>
                         }
                     />
@@ -66,15 +68,15 @@ export default function Login({ changeForm, handleChangeForm, theme }) {
                         <label htmlFor="checkBox">Remember me</label>
                     </div>
 
-                    <a href="#" className='forgetPassword'>Forget password?</a>
+                    <p className='forgetPassword'><Link to='reset-password'>Forget password?</Link></p>
                 </div>
 
                 <button type='submit' disabled={disableForm}>
                     {isLoading ? <CircularProgress color={'inherit'} size={'1rem'} /> : 'Login now'}
                 </button>
-                {isError ? <p className='signupError'>{error?.message}</p> : null}
+                {isError ? <p className='error'>{error?.message}</p> : null}
             </form>
-            <p>Don't have an account? <a href="#" onClick={(e) => handleChangeForm(e)}>Signup now</a></p>
+            <p>Don't have an account? <Link to='signup'>Signup now</Link></p>
 
         </div>
     )

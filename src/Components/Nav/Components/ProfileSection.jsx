@@ -65,9 +65,15 @@ export default function ProfileSection() {
             <div className='navRegister'>
                 {isLoading ? <CircularProgress color={'inherit'} size={'1.5rem'} /> :
                     !isLogin ?
-                        <Link to='/register'>
-                            <span>Sign Up / Login</span>
-                        </Link> : <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                        <div>
+                            <Link to='/register'>
+                            <span>Login</span>
+                            </Link>
+                            /
+                            <Link to='/register/signup'>
+                            <span>Sign Up</span>
+                            </Link>
+                        </div> : <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                             {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
                                 <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
                             <Tooltip title="Account settings">

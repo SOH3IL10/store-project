@@ -8,18 +8,29 @@ import FormControl from '@mui/material/FormControl';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { useSignUpEmailPassword } from '@nhost/react'
 import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useStateContext } from '../../../Context/Context';
 
-export default function SignUp({ changeForm, handleChangeForm, theme }) {
+export default function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [errorRegister, setErrorRegister] = useState('');
+    const [acceptRuls, setAcceptRuls] = useState(true);
+    const { theme } = useStateContext();
 
     const { signUpEmailPassword, isLoading, isSuccess, needsEmailVerification, isError, error } = useSignUpEmailPassword();
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
+
+        if (password !== confirmPassword)
+            return setErrorRegister('Passwords must be same');
+        else if (!acceptRuls)
+            return setErrorRegister('Please accept the terms & conditions');
+        else setErrorRegister('');
 
         signUpEmailPassword(email, password, {
             displayName: `${name}`.trim(),
@@ -32,11 +43,11 @@ export default function SignUp({ changeForm, handleChangeForm, theme }) {
     if (isSuccess) {
         return <Navigate to="/" replace={true} />
     }
-    
+
     const disableForm = isLoading || needsEmailVerification
 
     return (
-        <div className={changeForm ? ( theme==='dark' ? 'backgroundDark boxShadowDark signup active' : 'signup active') : ( theme==='dark-theme' ? 'backgroundDark boxShadowDark signup' : 'signup') }>
+        <div className={theme === 'dark' ? 'backgroundDark boxShadowDark signup' : 'signup'}>
             <h2 className="title">Registration</h2>
             <form onSubmit={handleOnSubmit}>
                 <FormControl variant="standard" className='input'>
@@ -81,6 +92,8 @@ export default function SignUp({ changeForm, handleChangeForm, theme }) {
                 </FormControl>
                 <FormControl variant="standard" className='input'>
                     <Input type='password'
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         autoComplete='current-password'
                         placeholder='Confirm a password'
                         startAdornment={
@@ -92,16 +105,17 @@ export default function SignUp({ changeForm, handleChangeForm, theme }) {
                 </FormControl>
 
                 <div className="acceptRuls">
-                    <input type="checkBox" id='checkBoxRuls' />
+                    <input type="checkBox" id='checkBoxRuls' checked={acceptRuls} onChange={() => setAcceptRuls(!acceptRuls)} />
                     <label htmlFor="checkBoxRuls">I accept all terms & conditions</label>
                 </div>
 
                 <button type='submit' disabled={disableForm}>
                     {isLoading ? <CircularProgress color={'inherit'} size={'1rem'} /> : 'Register now'}
                 </button>
-                {isError ? <p className='signupError'>{error?.message}</p> : null}
+                {isError ? <p className='error'>{error?.message}</p> : null}
+                {errorRegister ? <p className='error'>{errorRegister}</p> : null}
             </form>
-            <p>Already have an account? <a href="#" onClick={(e) => handleChangeForm(e)}>Login now</a></p>
+            <p>Already have an account? <Link to={'/register'}>Login now</Link></p>
 
         </div>
     )

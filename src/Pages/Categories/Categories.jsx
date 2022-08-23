@@ -10,7 +10,7 @@ import Loading from '../../Components/Loading';
 import { useStateContext } from '../../Context/Context';
 
 export default function Categories() {
-    const params = useParams();
+    const {category} = useParams();
     const [filter, setFilter] = useState('newest');
     const [displayDirection, setDisplayDirection] = useState(true);
     const [products, setProducts] = useState([]);
@@ -24,7 +24,7 @@ export default function Categories() {
 
     useEffect(() => {
         setLoading(true);
-        if (params.category === "all categories") {
+        if (category === "all categories") {
             get()
                 .then(data => {
                     setFilter('newest');
@@ -33,7 +33,7 @@ export default function Categories() {
                     setLoading(false);
                 })
         } else {
-            get(`category/${params.category}`)
+            get(`category/${category}`)
                 .then(data => {
                     setFilter('newest');
                     setProducts(data);
@@ -41,7 +41,7 @@ export default function Categories() {
                     setLoading(false);
                 })
         }
-    }, [params.category])
+    }, [category])
 
     useEffect(() => {
         switch (filter) {

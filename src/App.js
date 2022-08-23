@@ -10,7 +10,10 @@ import { useDispatch, useStateContext } from "./Context/Context";
 import { actionTypes } from "./Context/reducer";
 import { useEffect } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
+import ChangePassword from "./Pages/Register/Components/ChangePassword";
+import Login from "./Pages/Register/Components/Login";
+import SignUp from "./Pages/Register/Components/SignUp";
+import ResetPassword from "./Pages/Register/Components/ResetPassword";
 
 function App() {
     const user = useUserData();
@@ -37,19 +40,22 @@ function App() {
     useEffect(() => {
         const darkMode = !!localStorage.getItem('theme');
         if (darkMode) {
-            // document.body.classList.add('dark-theme');
             dispatch({
                 type: actionTypes.SET_DARK_MODE
             })
         }
-        // localStorage.getItem('theme') && document.body.classList.add('dark-theme') 
     }, [localStorage.getItem('theme')])
 
     return (
         <ThemeProvider theme={darkTheme}>
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="register" element={<Register />} />
+                <Route path="register" element={<Register />}>
+                    <Route index element={<Login />} />
+                    <Route path='signup' element={<SignUp />} />
+                    <Route path='reset-password' element={<ResetPassword />} />
+                    <Route path='change-password' element={<ChangePassword />} />
+                </Route>
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="products/:productID" element={<ProductsBlog />} />
                 <Route path="categories/:category" element={<Categories />} />
