@@ -1,65 +1,76 @@
-@import '../../Mixin&Variables/Mixins.scss';
+@import "../../Mixin&Variables/Mixins.scss";
 
 .categories {
-    @include flex(center, column, null);
+  @include flex(center, column, null);
 }
 
 .filterTools {
-    @include flex(center, row, space-between);
-    background-color: #fff;
-    width: 85%;
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    border: 1px solid rgba($color: #ccc, $alpha: 0.6);
-    .itemsDisplay {
-        @include flex(center, row, null);
-        svg {
-            font-size: 1.8rem;
-            transition: color 0.2s ease-in-out;
-            cursor: pointer;
-            margin-right: .5rem;
-            opacity: 0.6;
-            &:hover {
-                opacity: 1;
-            }
-        }
-        .activDisplay{
-            opacity: 1;
-        }
+  @include flex(center, row, space-between);
+  background-color: #fff;
+  width: 85%;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: 1px solid rgba($color: #ccc, $alpha: 0.6);
+  .itemsDisplay {
+    @include flex(center, row, null);
+    svg {
+      font-size: 1.8rem;
+      transition: color 0.2s ease-in-out;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      opacity: 0.6;
+      &:hover {
+        opacity: 1;
+      }
     }
+    .activDisplay {
+      opacity: 1;
+    }
+  }
 }
 
 .categoriesItem {
-    width: 89%;
-    @include flex(center, row, space-evenly);
-    padding: 1rem 0;
-    flex-wrap: wrap;
-    .categoryItem {
-        max-width: 300px !important;
-        transition: all .3s;
-    }
+  width: 89%;
+  @include flex(center, row, space-evenly);
+  padding: 1rem 0;
+  flex-wrap: wrap;
+  .categoryItem {
+    max-width: 300px !important;
+    transition: all 0.3s;
+  }
 }
 
 .displayColumn {
-    width: 89%;
-    @include flex(center, column, null);
-    padding: 1rem 0;
-    .categoryItem {
-        transition: all .7s;
-        flex-direction: row !important;
-        max-width: 100% !important;
-        padding: 3rem !important;
-        text-align: left !important;
-        img{
-            width: 35% !important;
-        }
-        .priceAndStar {
-            flex-direction: column;
-            align-items: flex-start;
-            line-height: 2;
-        }
-        button {
-            width: 250px !important;
-        }
+  width: 89%;
+  @include flex(center, column, null);
+  padding: 1rem 0;
+  .categoryItem {
+    transition: all 0.7s;
+    flex-direction: row !important;
+    max-width: 100% !important;
+    padding: 3rem !important;
+    text-align: left !important;
+    align-items: center;
+    @include extra-small {
+      flex-direction: column !important;
     }
+    img {
+      width: 35% !important;
+      @include extra-small {
+        margin-bottom: 1rem;
+      }
+    }
+    .priceAndStar {
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 2;
+    }
+    button {
+      width: 250px !important;
+      @include extra-small {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
 }

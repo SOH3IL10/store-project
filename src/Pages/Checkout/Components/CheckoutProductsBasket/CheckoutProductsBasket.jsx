@@ -2,11 +2,12 @@ import React from 'react'
 import './style.scss';
 import CheckoutProductItem from './CheckoutProductItem';
 import CheckoutSubtotal from './CheckoutSubtotal';
+import Grid from '@mui/material/Grid';
 
 export default function CheckoutProductsBasket({ basket, theme }) {
 
     return (
-        <div className='checkoutProductsBasket'>
+        <Grid item xs={11} md={7} lg={7} className='checkoutProductsBasket'>
             <h1>Shopping Cart.</h1>
             <div className='checkOutProducts'>
                 {
@@ -15,6 +16,6 @@ export default function CheckoutProductsBasket({ basket, theme }) {
             </div>
 
             <CheckoutSubtotal theme={theme} products={basket} />
-        </div>
+        </Grid>
     )
 }

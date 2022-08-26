@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { get } from '../../../Services/HttpClient';
 import SearchResultItems from './SearchResultItems';
 import ClearIcon from '@mui/icons-material/Clear';
+import Grid from '@mui/material/Grid';
 
 export default function SearchBox({theme}) {
     const [value, setValue] = useState('');
@@ -36,12 +37,12 @@ export default function SearchBox({theme}) {
 
     return (
         <>
-            <div className={theme=== 'dark' ? 'backgroundDark navSearch' : 'navSearch'}>
+            <Grid item xs={7} md={9} lg={8} className={theme=== 'dark' ? 'backgroundDark navSearch' : 'navSearch'}>
                 <input type="text" placeholder='Search products & trands' value={value} onChange={(e) => setValue(e.target.value) } />
                 <div className='navSearchIcon'>
                     {value.length > 0 ? <ClearIcon onClick={() => setValue('')} /> : <SearchIcon />}
                 </div>
-            </div>
+            </Grid>
             {
                 filteredData.length > 0 &&
                 <div className={theme === 'dark' ? 'backgroundDark boxShadowDark searchResult' : 'searchResult'}>

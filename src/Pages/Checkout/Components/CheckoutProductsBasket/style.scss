@@ -1,117 +1,156 @@
 $grayColor: rgb(146, 146, 146);
-@import '../../../../Mixin&Variables/Mixins.scss';
+@import "../../../../Mixin&Variables/Mixins.scss";
 
 .checkoutProductsBasket {
-    @include flex(null,column,null);
-    flex: .6;
-    margin-right: 2rem;
-    h1{
-        margin: 0;
-    }
-    
+  @include flex(null, column, null);
+  // flex: .6;
+  @include extra-small {
+    margin-right: unset !important;
+  }
+  @include small {
+    margin-right: unset !important;
+  }
+  margin-right: 2rem !important;
+  h1 {
+    margin: 0;
+  }
 }
 
 .checkOutProducts {
-    @include flex(null,column,null);
-    margin: 1rem 0;
+  @include flex(null, column, null);
+  margin: 1rem 0;
 }
 
 .checkOutProductItem {
-    @include flex(center,row,space-between);
-    border-bottom: 1px solid rgb(226, 226, 226);
-    padding: 1rem 0;
-    
-    img{
-        max-width: 100px;
-        object-fit: contain;
-    }
+  @include flex(center, row, space-between);
+  border-bottom: 1px solid rgb(226, 226, 226);
+  padding: 1rem 0;
 
-    p.productName {
-        max-width: 300px;
-        height: 90px;
-        @include flex(center,null,null);
-        flex-wrap: wrap;
-        overflow: hidden;
-        word-break: break-word;
-        margin: 0;
-    }
-    
-    .productQuantity {
-        @include flex(center,row,null);
-        border-radius: 4px;
-        button{
-            border: none;
-            outline: none;
-            font-weight: bold;
-            padding: .3rem 0.5rem;
-            border-radius: 5px;
-            background-color: transparent;
-            font-size: large;
-            cursor: pointer;
-            @include btnHover;
-        }
-        strong{
-            width: 40px;
-            padding: .3rem;
-            background-color: transparent;
-            text-align: center;
-        }
-    }
+  img {
+    max-width: 100px;
+    object-fit: contain;
+  }
 
-    button.removeProductBtn {
-        border: none;
-        outline: none;
-        background-color: transparent;
-        color: $grayColor;
-        cursor: pointer;
-        border-radius: 5px;
-        @include btnHover;
+  p.productName {
+    max-width: 300px;
+    height: 90px;
+    @include flex(center, null, null);
+    flex-wrap: wrap;
+    overflow: hidden;
+    word-break: break-word;
+    margin: 0;
+    @include extra-small {
+      justify-content: center;
+      max-width: unset;
     }
+  }
 
+  .productQuantity {
+    @include flex(center, row, null);
+    border-radius: 4px;
+    @include extra-small {
+      order: 2;
+    }
+    button {
+      border: none;
+      outline: none;
+      font-weight: bold;
+      padding: 0.3rem 0.5rem;
+      border-radius: 5px;
+      background-color: transparent;
+      font-size: large;
+      cursor: pointer;
+      @include btnHover;
+    }
+    strong {
+      width: 40px;
+      padding: 0.3rem;
+      background-color: transparent;
+      text-align: center;
+    }
+  }
+
+  button.removeProductBtn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: $grayColor;
+    cursor: pointer;
+    border-radius: 5px;
+    @include btnHover;
+  }
+}
+
+.productPrice {
+  @include extra-small {
+    order: 1;
+  }
+}
+
+.removeBtnBox {
+  @include extra-small {
+    order: 3;
+  }
 }
 
 .subTotalAndBtn {
-    @include flex(flex-end,row,space-between);
-    button{
-        @include buttonStyle;
+  @include flex(flex-end, row, space-between);
+  .buttonBox {
+    // order: 1;
+    @include extra-small {
+      order: 2;
+    }
+    button {
+      @include buttonStyle;
+      @include extra-small {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .subTotal {
+    line-height: 2;
+    @include flex(flex-end, column, null);
+    // order: 2;
+    @include extra-small {
+      order: 1;
+      align-items: center !important;
+      margin: 1rem 0 2rem 0 !important;
     }
 
-    .subTotal{
-        line-height: 2;
-        @include flex(null,column,null);
-        
-        p{
-            @include flex(center,row,space-between);
-            width: 200px;
-            margin: 0;
-            &:nth-child(2){
-                border-bottom: 1px solid rgb(226, 226, 226);
-            }
-            &:last-child{
-                margin-top: 1rem;
-            }
-        }
+    p {
+      @include flex(center, row, space-between);
+      width: 200px;
+      margin: 0;
+      &:nth-child(2) {
+        border-bottom: 1px solid rgb(226, 226, 226);
+      }
+      &:last-child {
+        margin-top: 1rem;
+      }
     }
+  }
 }
 
 .emptyBasket {
-    @include flex(center,column,center);
-    line-height: 2;
-    margin-bottom: 3rem;
-    div{
-        svg{
-            display: block;
-            // background-color: #ccc;
-            border: 3px solid #1976d2;
-            border-radius: 50%;
-            padding: 2rem;
-    
-        }
+  @include flex(center, column, center);
+  line-height: 2;
+  margin-bottom: 3rem;
+  text-align: center;
+  div {
+    svg {
+      display: block;
+      // background-color: #ccc;
+      border: 3px solid #1976d2;
+      border-radius: 50%;
+      padding: 2rem;
     }
-    h2{
-        letter-spacing: 2px;
-    }
-    button{
-        @include buttonStyle;
-    }
+  }
+  h2 {
+    letter-spacing: 2px;
+  }
+  button {
+    @include buttonStyle;
+  }
 }

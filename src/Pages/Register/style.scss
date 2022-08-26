@@ -36,6 +36,9 @@
       margin-bottom: 2rem;
       input {
         width: 280px;
+        @include extra-small {
+          width: unset;
+        }
       }
     }
     .loginTools {

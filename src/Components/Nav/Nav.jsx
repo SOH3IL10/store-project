@@ -8,39 +8,39 @@ import ProfileSection from './Components/ProfileSection';
 import MenuDrawer from './Components/MenuDrawer';
 import SearchBox from './Components/SearchBox';
 import ChangeTheme from './Components/ChangeTheme';
+import Grid from '@mui/material/Grid';
 
 export default function Nav() {
     const { basket, theme } = useStateContext();
 
-    
     return (
         <div>
-            <nav className='nav'>
+            <Grid container component={'nav'} className='nav'>
 
-                <div className='navLogo'>
+                <MenuDrawer />
+
+                <Grid item xs={10} lg={1} className='navLogo'>
                     {/* lOGO */}
                     {/* <img src="" alt="" /> */}
                     <Link to={'/'}>
                         <h1>LOGO</h1>
                     </Link>
-                </div>
+                </Grid>
 
-                <MenuDrawer />
-
+                <ChangeTheme theme={theme} />
+                
                 <SearchBox theme={theme} />
 
-                <div className='navBasket'>
+                <Grid item xs={1.5} md={1} lg={0.5} className='navBasket'>
                     <Link to={'/checkout'}>
                         <Badge badgeContent={basket.length} color="secondary">
                             <ShoppingCartIcon />
                         </Badge >
                     </Link>
-                </div>
-
-                <ChangeTheme theme={theme} />
+                </Grid>
 
                 <ProfileSection />
-            </nav>
+            </Grid>
         </div>
     )
 }

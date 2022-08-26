@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper";
 import useCounterDown from '../../../../Utils/CounterDown/CounterDown';
+import Grid from '@mui/material/Grid';
 
 export default function DealsOfTheDay({ products, addToBasket, theme }) {
   const prevRef = useRef(null);
@@ -15,13 +16,13 @@ export default function DealsOfTheDay({ products, addToBasket, theme }) {
   const time = useCounterDown("Aug 9, 2024 23:00:00")
 
   return (
-    <div className='dealsOfTheDay'>
-      <div className='dealsTime'>
+    <Grid container className='dealsOfTheDay'>
+      <Grid item xs={12} sm={12} md={3} lg={2} className='dealsTime'>
         <h1>Deals of the Day</h1>
         <p>{time}</p>
-      </div>
+      </Grid>
 
-      <div className='dealsProducts'>
+      <Grid item xs={12} sm={9} md={9} lg={10} className='dealsProducts'>
         <div className='deals'>
           <button className={theme === 'dark' ? 'buttonDark boxShadowDark beforeBtn' : 'beforeBtn'} ref={prevRef} ><NavigateBeforeIcon /></button>
           <button className={theme === 'dark' ? 'buttonDark nextBtn boxShadowDark' : 'nextBtn'} ref={nextRef} ><NavigateNextIcon /></button>
@@ -66,7 +67,7 @@ export default function DealsOfTheDay({ products, addToBasket, theme }) {
             }
           </Swiper>
         </div>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   )
 }

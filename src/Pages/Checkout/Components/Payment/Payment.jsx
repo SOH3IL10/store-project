@@ -4,6 +4,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
+import Grid from '@mui/material/Grid';
 
 export default function Payment({theme}) {
     const [value, setValue] = useState('creditCard');
@@ -13,7 +14,7 @@ export default function Payment({theme}) {
     };
 
     return (
-        <aside className={theme === 'dark' ? 'backgroundDark boxShadowDark checkoutPayment' : 'checkoutPayment'}>
+        <Grid component={'aside'} item xs={6} md={3} lg={3} className={theme === 'dark' ? 'backgroundDark boxShadowDark checkoutPayment' : 'checkoutPayment'}>
             <h1>Your almost there!</h1>
             <form>
                 <div className='paymentMethod'>
@@ -53,6 +54,6 @@ export default function Payment({theme}) {
 
                 <button className='checkoutBtn'>Check Out</button>
             </form>
-        </aside>
+        </Grid>
     )
 }

@@ -1,26 +1,64 @@
-@mixin flex($alainAitmes , $flexDirection, $justifyContent) {
-    display: flex;
-    align-items: $alainAitmes;
-    flex-direction: $flexDirection;
-    justify-content: $justifyContent;
+@mixin flex($alainAitmes, $flexDirection, $justifyContent) {
+  display: flex;
+  align-items: $alainAitmes;
+  flex-direction: $flexDirection !important;
+  justify-content: $justifyContent;
 }
 
 @mixin btnHover {
-    transition: 0.2s;
-    &:hover, &:focus{
-        background-color: rgba($color: #ccc, $alpha: 0.15);
-    }
+  transition: 0.2s;
+  &:hover,
+  &:focus {
+    background-color: rgba($color: #ccc, $alpha: 0.15);
+  }
 }
 
 @mixin buttonStyle {
-    @include flex(center,null,null);
-    padding: 0.8rem 2.5rem;
-    border-radius: 50px;
-    border: 1px solid rgb(218, 218, 218);
-    outline: none;
-    background-color: transparent;
-    @include btnHover;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
+  @include flex(center, null, null);
+  padding: 0.8rem 2.5rem;
+  border-radius: 50px;
+  border: 1px solid rgb(218, 218, 218);
+  outline: none;
+  background-color: transparent;
+  @include btnHover;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* ********* responsive mixins ********* */
+$extra-small-width: 0px;
+$small-width: 600px;
+$medium-width: 900px;
+$large-width: 1200px;
+$extra-large-width: 1536px;
+
+@mixin extra-small {
+  @media (max-width: #{$small-width}) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (max-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: #{$extra-large-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin extra-large {
+  @media (min-width: #{$extra-large-width}) {
+    @content;
+  }
 }

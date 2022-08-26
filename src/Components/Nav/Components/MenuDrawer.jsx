@@ -28,6 +28,7 @@ import { useDispatch, useStateContext } from '../../../Context/Context';
 import { actionTypes } from '../../../Context/reducer';
 import { useSignOut, useAuthenticationStatus } from '@nhost/react';
 import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
 
 const categories = [
     { icon: <DvrIcon />, primary: 'electronics' },
@@ -63,11 +64,11 @@ export default function MenuDrawer() {
 
     return (
         <>
-            <div className='navMenu'>
+            <Grid item xs={1} sm={1} md={1} lg={0.5} className='navMenu'>
                 <IconButton onClick={() => toggleDrawer(true)}>
                     <MenuIcon />
                 </IconButton>
-            </div>
+            </Grid>
 
             <Drawer
                 open={open}

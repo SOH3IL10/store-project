@@ -8,6 +8,9 @@ $grayColor: rgb(146, 146, 146);
     padding: 2rem 1.5rem;
     flex: .2;
     border-radius: 10px;
+    @include small {
+        margin-top: 2.5rem !important;
+    }
 
     h1{
         margin: 0;

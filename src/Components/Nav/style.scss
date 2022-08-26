@@ -1,22 +1,17 @@
 $grayColor: rgb(146, 146, 146);
-@import '../../Mixin&Variables/Mixins.scss';
+@import "../../Mixin&Variables/Mixins.scss";
 
 .nav {
-  width: 90%;
-  @include flex(center , row , space-evenly);
+  width: 90% !important;
+  @include flex(center, row, space-evenly);
   margin: 1.5rem auto;
 }
 
 .navLogo {
-  width: 150px;
-}
-
-.navMenu {
-  width: 100px;
+  text-align: center;
 }
 
 .navSearch {
-  flex: 1;
   @include flex(center, row, null);
   background-color: #fff;
   padding: 1rem 2rem;
@@ -37,17 +32,17 @@ $grayColor: rgb(146, 146, 146);
   cursor: pointer;
 }
 
-.navBasket, .changeTheme {
+.navBasket,
+.changeTheme {
   @include flex(center, row, center);
   padding: 0.5rem 0.8rem;
-  width: 50px;
   svg {
     cursor: pointer;
   }
 }
 
 .navRegister {
-  @include flex(center, row, null);
+  @include flex(center, row, center);
   span {
     cursor: pointer;
     margin: 0.5rem;
@@ -67,34 +62,53 @@ $grayColor: rgb(146, 146, 146);
   overflow-x: hidden;
   width: 50%;
   border-radius: 5px;
+  @include medium {
+    left: 50px;
+    top: 155px;
+  }
+  @include small {
+    left: 32px;
+    padding: 0.5rem;
+  }
+  @include extra-small {
+    width: 90%;
+    left: unset;
+  }
   .searchResultItem {
     @include flex(center, row, space-between);
     padding: 1rem 0;
-    &:not(:last-child){
+    &:not(:last-child) {
       border-bottom: 1px solid rgb(226, 226, 226);
-      
     }
-    img{
+    img {
       width: 75px;
       height: 75px;
       flex-grow: 1;
       object-fit: contain;
-
     }
     .searchResultInfo {
       flex-grow: 2;
       @include flex(center, row, space-between);
+      @include small {
+        @include flex(unset, column, null);
+        line-height: 1.5;
+      }
       a {
         flex-grow: 1;
         width: 200px;
+        @include small {
+          width: unset;
+          margin-bottom: 1rem;
+        }
       }
-      .resultItemRating, .resultItemPrice{
+      .resultItemRating,
+      .resultItemPrice {
         flex-grow: 1;
         text-align: center;
+        @include small {
+          text-align: unset;
+        }
       }
-      
-      
     }
   }
-  
 }

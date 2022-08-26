@@ -6,12 +6,13 @@ import { useDispatch, useStateContext } from '../../Context/Context';
 import { actionTypes } from '../../Context/reducer';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Grid from '@mui/material/Grid';
 
 export default function ProductPost({ product, theme }) {
-    const props = { width: 400, height: 200, scale: 1.5, offset: { vertical: 0, horizontal: 20 } };
-
     const dispatch = useDispatch();
     const { basket } = useStateContext();
+    const [props, setProps] = useState({});
+    const [innerWidth, setInnerWidth] = useState();
 
     const [changeButtons, setChangeButtons] = useState(null);
     const [productQuantity, setProductQuantity] = useState(0);
@@ -61,16 +62,42 @@ export default function ProductPost({ product, theme }) {
         checkProductQuantity();
     }, [product, basket])
 
+    useEffect(() => {
+        function handleChangeZoomPosition() {
+            if (innerWidth <= 900) {
+                setProps({
+                    width: 400,
+                    height: 200,
+                    scale: 1.2,
+                    zoomPosition: 'bottom',
+                    offset: { vertical: 0, horizontal: 0 }
+                })
+            }
+
+            else {
+                setProps({
+                    width: 400,
+                    height: 200,
+                    scale: 1.3,
+                    offset: { vertical: 0, horizontal: 20 }
+                })
+            }
+        }
+        handleChangeZoomPosition()
+    }, [innerWidth])
+
+    window.addEventListener('resize', () => setInnerWidth(window.innerWidth))
+
     return (
         <>
             {
                 product &&
-                <div className={theme === 'dark' ? 'backgroundDark productPost' : 'productPost'}>
-                    <div className='productImg'>
-                        <ReactImageZoom img={product.image} {...props}/>
+                <Grid container className={theme === 'dark' ? 'backgroundDark productPost' : 'productPost'}>
+                    <Grid item xs={12} sm={12} md={4} lg={4} className='productImg'>
+                        <ReactImageZoom className={'inter'} img={product.image} {...props} />
                         {/* <img src={product.image} alt={product.title} /> */}
-                    </div>
-                    <div className='productInfo'>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={8} lg={8} className='productInfo'>
                         <div className='productTitleRating'>
                             <h2>{product.title}</h2>
                             <div className="rating">
@@ -86,7 +113,7 @@ export default function ProductPost({ product, theme }) {
 
                         <div className="productDescription">
                             <h3>Product Description</h3>
-                            <p style={{color: theme === 'dark' && '#c9c9c9'}}>{product.description}</p>
+                            <p style={{ color: theme === 'dark' && '#c9c9c9' }}>{product.description}</p>
                         </div>
 
                         {
@@ -99,8 +126,8 @@ export default function ProductPost({ product, theme }) {
                         }
 
 
-                    </div>
-                </div>
+                    </Grid>
+                </Grid>
             }
         </>
     )

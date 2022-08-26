@@ -4,6 +4,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useDispatch } from '../../../Context/Context';
 import IconButton from '@mui/material/IconButton';
 import { actionTypes } from '../../../Context/reducer';
+import Grid from '@mui/material/Grid';
 
 export default function ChangeTheme({ theme }) {
   const dispatch = useDispatch();
@@ -18,13 +19,13 @@ export default function ChangeTheme({ theme }) {
   }
 
   return (
-    <div className='changeTheme'>
+    <Grid item xs={1} lg={0.5} className='changeTheme'>
       <IconButton onClick={handleChangeTheme} >
         {theme === 'dark' ?
           <LightModeIcon /> :
           <DarkModeIcon />
         }
       </IconButton>
-    </div>
+    </Grid>
   )
 }

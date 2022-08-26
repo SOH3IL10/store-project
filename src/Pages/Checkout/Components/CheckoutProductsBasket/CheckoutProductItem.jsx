@@ -5,6 +5,7 @@ import { useDispatch } from '../../../../Context/Context';
 import { actionTypes } from '../../../../Context/reducer';
 import currencyFormat from '../../../../Utils/CurrencyFormat/CurrencyFormat';
 import { Link } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
 
 export default function CheckoutProductItem({ product, theme }) {
     const dispatch = useDispatch();
@@ -35,27 +36,33 @@ export default function CheckoutProductItem({ product, theme }) {
         })
     }
     return (
-        <div className="checkOutProductItem">
-            <img src={product.image} alt="" />
+        <Grid container className="checkOutProductItem">
+            <Grid item xs={12} sm={2}  textAlign={'center'}>
+                <img src={product.image} alt="" />
+            </Grid>
 
-            <Link to={`/products/${product.id}`}>
-                <p className='productName'><strong>{product.title}</strong></p>
-            </Link>
+            <Grid item xs={12} sm={5}>
+                <Link to={`/products/${product.id}`}>
+                    <p className='productName'><strong>{product.title}</strong></p>
+                </Link>
+            </Grid>
 
-            <div className='productQuantity'>
-                <button className={theme=== 'dark' ? 'colorDark' : undefined} onClick={decrementQualityHandler}>-</button>
+            <Grid item xs={6} sm={2}  className='productQuantity'>
+                <button className={theme === 'dark' ? 'colorDark' : undefined} onClick={decrementQualityHandler}>-</button>
                 <strong>{product.quantity}</strong>
-                <button className={theme=== 'dark' ? 'colorDark' : undefined} onClick={incrementQualityHandler}>+</button>
-            </div>
+                <button className={theme === 'dark' ? 'colorDark' : undefined} onClick={incrementQualityHandler}>+</button>
+            </Grid>
 
-            <div className="productPrice">
+            <Grid item xs={4} sm={1}  className="productPrice">
                 <small>$</small>
                 <strong>{currencyFormat(product.quantity * product.price)}</strong>
-            </div>
+            </Grid>
 
-            <button onClick={handleRemoveItemFromBasket} className='removeProductBtn'>
-                <ClearIcon />
-            </button>
-        </div>
+            <Grid item xs={1} className='removeBtnBox'>
+                <button onClick={handleRemoveItemFromBasket} className='removeProductBtn'>
+                    <ClearIcon />
+                </button>
+            </Grid>
+        </Grid>
     )
 }

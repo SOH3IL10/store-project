@@ -6,16 +6,20 @@ $grayColor: rgb(146, 146, 146);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    @include flex(center , row , null);
+    @include flex(center , null , null);
     padding: 5rem 3rem;
     margin-bottom: 2rem;
 
     .dealsTime {
         @include flex(center , column , center);
         color: #fff;
-        flex: 0.2;
+        @include small {
+            margin-bottom: 1rem !important;
+        }
+        @include large {
+            padding-right: 2rem;
+        }
         text-align: center;
-        margin-right: 2rem;
         h1{
             font-size: 40px;
         }
@@ -26,10 +30,10 @@ $grayColor: rgb(146, 146, 146);
     }
 
     .dealsProducts {
-        overflow: hidden;
-        flex: 0.8;
+        @include small {
+            margin: 0 auto;
+        }
         div.deals{
-            margin: 0 2rem;
             @include flex(center , row , space-between);
             position: relative;
             button.beforeBtn, button.nextBtn {

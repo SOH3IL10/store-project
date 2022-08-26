@@ -19,6 +19,7 @@ import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import Grid from '@mui/material/Grid';
 
 export default function ProfileSection() {
     const { isAuthenticated, isLoading } = useAuthenticationStatus();
@@ -62,7 +63,7 @@ export default function ProfileSection() {
 
     return (
         <>
-            <div className='navRegister'>
+            <Grid item xs={3.5} md={2} lg={1.5} className='navRegister'>
                 {isLoading ? <CircularProgress color={'inherit'} size={'1.5rem'} /> :
                     !isLogin ?
                         <div>
@@ -90,7 +91,7 @@ export default function ProfileSection() {
                             </Tooltip>
                         </Box>
                 }
-            </div>
+            </Grid>
 
             <Menu
                 anchorEl={anchorEl}
