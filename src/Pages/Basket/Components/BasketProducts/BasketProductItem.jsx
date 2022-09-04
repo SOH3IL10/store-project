@@ -7,7 +7,7 @@ import currencyFormat from '../../../../Utils/CurrencyFormat/CurrencyFormat';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 
-export default function CheckoutProductItem({ product, theme }) {
+export default function BasketProductItem({ product, theme }) {
     const dispatch = useDispatch();
 
     function handleRemoveItemFromBasket() {
@@ -36,7 +36,7 @@ export default function CheckoutProductItem({ product, theme }) {
         })
     }
     return (
-        <Grid container className="checkOutProductItem">
+        <Grid container className="basketProductItem">
             <Grid item xs={12} sm={2}  textAlign={'center'}>
                 <img src={product.image} alt="" />
             </Grid>

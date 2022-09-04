@@ -45,7 +45,7 @@ export default function Product({ product, addToBasket, classNameProps, theme })
                         </div>
 
                         {
-                            addToBasket && <button className={theme === 'dark' && 'buttonDark'} onClick={handleAddToBaskdet}>Add to Basket</button>
+                            addToBasket && <button className={theme === 'dark' ? 'buttonDark' : undefined} onClick={handleAddToBaskdet}>Add to Basket</button>
                         }
                     </div>
                 </div>

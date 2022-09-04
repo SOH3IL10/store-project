@@ -1,5 +1,5 @@
 @import "../../Mixin&Variables/Mixins.scss";
-@import "../Checkout/Components/CheckoutProductsBasket/style.scss";
+@import "../Basket/Components/BasketProducts/style.scss";
 
 .notFound {
   @include flex(center, column, center);

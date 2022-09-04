@@ -32,7 +32,7 @@ export default function Nav() {
                 <SearchBox theme={theme} />
 
                 <Grid item xs={1.5} md={1} lg={0.5} className='navBasket'>
-                    <Link to={'/checkout'}>
+                    <Link to={'/basket'}>
                         <Badge badgeContent={basket.length} color="secondary">
                             <ShoppingCartIcon />
                         </Badge >

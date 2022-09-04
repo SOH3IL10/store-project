@@ -89,7 +89,7 @@ export default function MenuDrawer() {
                                 </ListItemButton>
                             </ListItem>
                         </Link>
-                        <Link to={'/checkout'}>
+                        <Link to={'/basket'}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon>

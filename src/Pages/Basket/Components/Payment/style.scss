@@ -1,0 +1,107 @@
+$grayColor: rgb(146, 146, 146);
+@import "../../../../Mixin&Variables/Mixins.scss";
+
+.checkoutPayment {
+  @include flex(center, column, center);
+  box-shadow: 0px 0px 16px -2px rgb(187 187 187 / 75%);
+  margin-left: 2rem;
+  padding: 2rem 1.5rem;
+  flex: 0.2;
+  border-radius: 10px;
+  @include small {
+    margin-top: 2.5rem !important;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  form {
+    width: 100%;
+    small {
+      color: $grayColor;
+    }
+    .paymentMethod {
+      margin: 2rem 0;
+    }
+
+    .nameOnCard,
+    .cardNumber,
+    .cardExp,
+    .cardCvv {
+      @include flex(null, column, null);
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    .privacyCardInfo {
+      @include flex(center, row, space-between);
+      input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+      }
+      .cardExp {
+        input {
+          width: 80%;
+        }
+      }
+      .cardCvv {
+        input {
+          width: 50%;
+        }
+      }
+    }
+
+    
+  }
+}
+
+button.checkoutBtn {
+  @include flex(center , row, center);
+  border: none;
+  outline: none;
+  padding: 0.8rem 0;
+  width: 300px;
+  background-color: #492bbe;
+  &:hover {
+    background-color: rgba($color: #492bbe, $alpha: 0.9);
+  }
+  color: #fff;
+  border-radius: 10px;
+  margin: 2rem auto 0 auto;
+  cursor: pointer;
+  svg {
+    margin-left: 0.5rem;
+  }
+}
+
+.notLogin {
+  @include flex(center, column, center);
+  margin-top: 4rem;
+  width: 300px;
+  h3{
+    @include flex(center, row, null);
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+  a {
+    width: 100%;
+  }
+  button {
+    border: none;
+    outline: none;
+    padding: 0.8rem 0;
+    display: block;
+    width: 80%;
+    margin: 0.5rem auto;
+    background-color: #492bbe;
+    &:hover {
+      background-color: rgba($color: #492bbe, $alpha: 0.9);
+    }
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}

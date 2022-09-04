@@ -1,7 +1,7 @@
 $grayColor: rgb(146, 146, 146);
 @import "../../../../Mixin&Variables/Mixins.scss";
 
-.checkoutProductsBasket {
+.basketProducts {
   @include flex(null, column, null);
   // flex: .6;
   @include extra-small {
@@ -21,24 +21,26 @@ $grayColor: rgb(146, 146, 146);
   margin: 1rem 0;
 }
 
-.checkOutProductItem {
+.basketProductItem {
   @include flex(center, row, space-between);
   border-bottom: 1px solid rgb(226, 226, 226);
   padding: 1rem 0;
 
   img {
     max-width: 100px;
+    height: 100px;
     object-fit: contain;
   }
 
   p.productName {
-    max-width: 300px;
+    width: 90%;
     height: 90px;
     @include flex(center, null, null);
     flex-wrap: wrap;
     overflow: hidden;
     word-break: break-word;
     margin: 0;
+    line-height: 1.5;
     @include extra-small {
       justify-content: center;
       max-width: unset;
@@ -121,7 +123,7 @@ $grayColor: rgb(146, 146, 146);
 
     p {
       @include flex(center, row, space-between);
-      width: 200px;
+      width: 300px;
       margin: 0;
       &:nth-child(2) {
         border-bottom: 1px solid rgb(226, 226, 226);

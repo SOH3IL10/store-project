@@ -20,8 +20,8 @@ export default function ProductsSection({ title, products, addToBasket, theme })
                         <div className='productTitle'>
                             <h1>{title}</h1>
                             <div className='productsBtn' >
-                                <button className={theme === 'dark' && 'buttonDark'} ref={prevRef}><NavigateBeforeIcon /></button>
-                                <button className={theme === 'dark' && 'buttonDark'} ref={nextRef}><NavigateNextIcon /></button>
+                                <button className={theme === 'dark' ? 'buttonDark' : undefined} ref={prevRef}><NavigateBeforeIcon /></button>
+                                <button className={theme === 'dark' ? 'buttonDark' : undefined} ref={nextRef}><NavigateNextIcon /></button>
                             </div>
                         </div>
                         <div className='products'>

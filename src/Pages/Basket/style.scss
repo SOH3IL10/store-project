@@ -1,7 +1,7 @@
 $grayColor: rgb(146, 146, 146);
 @import '../../Mixin&Variables/Mixins.scss';
 
-.checkout {
+.basket {
     @include flex(baseline, row, center);
     width: 100%;
     margin: 3rem 0;
