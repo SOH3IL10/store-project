@@ -2,7 +2,6 @@ import React, { useLayoutEffect } from 'react';
 import '../style.scss';
 import { useSignOut } from '@nhost/react';
 import { useAuthenticationStatus } from '@nhost/react'
-import { actionTypes } from '../../../Context/reducer';
 import { Link } from 'react-router-dom';
 import { useDispatch, useStateContext } from '../../../Context/Context';
 import Box from '@mui/material/Box';
@@ -20,6 +19,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Grid from '@mui/material/Grid';
+import { removeUserAction, setDarkModeAction, setLightModeAction } from '../../../Context/actions';
 
 export default function ProfileSection() {
     const { isAuthenticated, isLoading } = useAuthenticationStatus();
@@ -32,9 +32,7 @@ export default function ProfileSection() {
 
     function handleLogOut() {
         signOut();
-        dispatch({
-            type: actionTypes.REMOVE_USER,
-        })
+        dispatch(removeUserAction());
     }
 
     const open = Boolean(anchorEl);
@@ -53,12 +51,7 @@ export default function ProfileSection() {
     }, [isAuthenticated])
 
     const handleChangeTheme = () => {
-        theme === 'light' ?
-            dispatch({
-                type: actionTypes.SET_DARK_MODE
-            }) : dispatch({
-                type: actionTypes.SET_LIGHT_MODE
-            })
+        theme === 'light' ? dispatch(setDarkModeAction()) : dispatch(setLightModeAction())
     }
 
     return (
@@ -68,11 +61,11 @@ export default function ProfileSection() {
                     !isLogin ?
                         <div>
                             <Link to='/register'>
-                            <span>Login</span>
+                                <span>Login</span>
                             </Link>
                             /
                             <Link to='/register/signup'>
-                            <span>Sign Up</span>
+                                <span>Sign Up</span>
                             </Link>
                         </div> : <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                             {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>

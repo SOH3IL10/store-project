@@ -7,7 +7,6 @@ import Register from "./Pages/Register";
 import Categories from "./Pages/Categories";
 import { useUserData } from "@nhost/react";
 import { useDispatch, useStateContext } from "./Context/Context";
-import { actionTypes } from "./Context/reducer";
 import { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ChangePassword from "./Pages/Register/Components/ChangePassword";
@@ -20,6 +19,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import PrivateRoute from "./Components/PrivateRoutes/PrivateRoute";
 import getBasketSubtotal from "./Utils/BasketTotal/getBasketTotal";
 import { createPaymentIntent } from "./Services/HttpClient";
+import { setDarkModeAction, setUserAction } from "./Context/actions";
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 
@@ -32,7 +32,7 @@ function App() {
     useEffect(() => {
         const total = getBasketSubtotal(basket);
 
-        const data = JSON.stringify({ items: { id: "total", price: parseFloat(total.toFixed(2)) } })
+        const data = { items: { id: "total", price: total } }
 
         createPaymentIntent('/create-payment-intent', data,)
             .then(data => setClientSecret(data.clientSecret))
@@ -55,22 +55,16 @@ function App() {
 
     useEffect(() => {
         if (user) {
-            dispatch({
-                type: actionTypes.SET_USER,
-                payload: {
-                    user: user
-                }
-            })
+            dispatch(setUserAction(user))
         }
     }, [user])
 
     useEffect(() => {
         const darkMode = !!localStorage.getItem('theme');
-        if (darkMode) {
-            dispatch({
-                type: actionTypes.SET_DARK_MODE
-            })
-        }
+
+        if (darkMode)
+            dispatch(setDarkModeAction());
+
     }, [localStorage.getItem('theme')])
 
     return (

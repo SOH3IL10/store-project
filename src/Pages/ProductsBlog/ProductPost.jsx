@@ -3,10 +3,10 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Rating from '@mui/material/Rating';
 import ReactImageZoom from 'react-image-zoom';
 import { useDispatch, useStateContext } from '../../Context/Context';
-import { actionTypes } from '../../Context/reducer';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
+import { addToBasketAction, decrementProductQuanityAction } from '../../Context/actions';
 
 export default function ProductPost({ product, theme }) {
     const dispatch = useDispatch();
@@ -18,33 +18,14 @@ export default function ProductPost({ product, theme }) {
     const [productQuantity, setProductQuantity] = useState(0);
 
     function handleAddToBaskdet() {
-        dispatch({
-            type: actionTypes.ADD_TO_BASKET,
-            payload: {
-                id: product.id,
-                image: product.image,
-                title: product.title,
-                price: product.price,
-                quantity: 1
-            }
-        })
+        dispatch(addToBasketAction(product.id, product.image, product.title, product.price));
     }
 
     function incrementQualityHandler() {
-        dispatch({
-            type: actionTypes.ADD_TO_BASKET,
-            payload: {
-                id: product.id
-            }
-        })
+        dispatch(addToBasketAction(product.id));
     }
     function decrementQualityHandler() {
-        dispatch({
-            type: actionTypes.DECREMENT_PRODUCT_QUANITY,
-            payload: {
-                id: product.id
-            }
-        })
+        dispatch(decrementProductQuanityAction(product.id));
     }
 
     useEffect(() => {

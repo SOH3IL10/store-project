@@ -4,7 +4,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -24,11 +23,11 @@ import ManIcon from '@mui/icons-material/Man';
 import AlignHorizontalLeftIcon from '@mui/icons-material/AlignHorizontalLeft';
 import DrawerListItem from './DrawerListItem';
 import { Link } from 'react-router-dom';
-import { useDispatch, useStateContext } from '../../../Context/Context';
-import { actionTypes } from '../../../Context/reducer';
+import { useDispatch } from '../../../Context/Context';
 import { useSignOut, useAuthenticationStatus } from '@nhost/react';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
+import { removeUserAction } from '../../../Context/actions';
 
 const categories = [
     { icon: <DvrIcon />, primary: 'electronics' },
@@ -45,7 +44,6 @@ export default function MenuDrawer() {
     const dispatch = useDispatch();
     const { signOut } = useSignOut();
     const { isAuthenticated } = useAuthenticationStatus();
-    const { theme } = useStateContext();
 
     const handleClick = () => {
         setOpenCategories(!openCategories);
@@ -57,9 +55,7 @@ export default function MenuDrawer() {
 
     const handleLogOut = () => {
         signOut();
-        dispatch({
-            type: actionTypes.REMOVE_USER
-        })
+        dispatch(removeUserAction());
     }
 
     return (
