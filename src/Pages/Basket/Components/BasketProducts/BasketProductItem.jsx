@@ -42,7 +42,7 @@ export default function BasketProductItem({ product, theme }) {
             </Grid>
 
             <Grid item xs={12} sm={5}>
-                <Link to={`/products/${product.id}`}>
+                <Link to={`/products/${product.id}/${product.title}`}>
                     <p className='productName'><strong>{product.title}</strong></p>
                 </Link>
             </Grid>

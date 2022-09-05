@@ -7,6 +7,7 @@ import { get } from '../../Services/HttpClient'
 import ProductRelated from './ProductRelated';
 import Loading from '../../Components/Loading';
 import { useStateContext } from '../../Context/Context';
+import CustomSeparator from '../../Components/Breadcrumbs';
 
 export default function ProductsBlog() {
     const [product, setProduct] = useState(null);
@@ -30,6 +31,13 @@ export default function ProductsBlog() {
             {
                 loading ? <Loading /> :
                     <div className='productsBlog'>
+                        <CustomSeparator
+                            steps={[
+                                { title: 'Home', href: '/' },
+                                { title: product?.category, href: `/categories/${product?.category}` },
+                            ]}
+                            currentStep={product?.title}
+                        />
 
                         <ProductPost theme={theme} product={product} />
 

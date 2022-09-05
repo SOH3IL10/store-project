@@ -11,6 +11,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 import { useLocation } from "react-router-dom";
+import CustomSeparator from "../../../../Components/Breadcrumbs";
 
 export default function Checkout() {
     const stripe = useStripe();
@@ -89,6 +90,10 @@ export default function Checkout() {
     return (
         <Layout>
             <div className='checkout'>
+                <CustomSeparator steps={[
+                    {title: 'Home', href: '/'},
+                    {title: 'Basket', href: '/basket'},
+                ]} currentStep={'Payment'} />
                 {
                     user &&
                     <div className={theme === 'dark' ? "backgroundDark checkoutInfo" : "checkoutInfo"}>

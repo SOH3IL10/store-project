@@ -90,12 +90,12 @@ function App() {
                             {
                                 clientSecret &&
                                 <Elements options={options} stripe={stripePromise}>
-                                    <Checkout  />
+                                    <Checkout />
                                 </Elements>
                             }
                         </PrivateRoute>}>
                 </Route>
-                <Route path="products/:productID" element={<ProductsBlog />} />
+                <Route path="products/:productID/:productName" element={<ProductsBlog />} />
                 <Route path="categories/:category" element={<Categories />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>

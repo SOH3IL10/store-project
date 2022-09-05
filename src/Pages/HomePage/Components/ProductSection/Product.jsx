@@ -29,7 +29,7 @@ export default function Product({ product, addToBasket, classNameProps, theme })
                     <img src={product.image} alt="" />
 
                     <div className='productDetail'>
-                        <Link to={`/products/${product.id}`}>
+                        <Link to={`/products/${product.id}/${product.title}`}>
                             <h3><strong>{product.title}</strong></h3>
                         </Link>
 

@@ -8,9 +8,10 @@ import { get } from '../../Services/HttpClient'
 import { sortByNameA_Z, sortByNameZ_A, sortByPriceHigh_Low, sortByPriceLow_High, sortByStar } from '../../Utils/SortFunctions/SortFunctions';
 import Loading from '../../Components/Loading';
 import { useStateContext } from '../../Context/Context';
+import CustomSeparator from '../../Components/Breadcrumbs';
 
 export default function Categories() {
-    const {category} = useParams();
+    const { category } = useParams();
     const [filter, setFilter] = useState('newest');
     const [displayDirection, setDisplayDirection] = useState(true);
     const [products, setProducts] = useState([]);
@@ -72,6 +73,11 @@ export default function Categories() {
     return (
         <Layout>
             <div className='categories'>
+                <CustomSeparator steps={[
+                    { title: 'Home', href: '/' },
+                    { title: 'Categories', href: '/categories/all categories' },
+                ]} currentStep={category} />
+
                 <FilterTools theme={theme} displayDirection={displayDirection} setDisplayDirection={setDisplayDirection} handleChange={handleChange} filter={filter} />
                 {
                     loading ? <Loading /> :
