@@ -100,12 +100,11 @@ export default function ProductPost({ product, theme }) {
                         {
                             changeButtons ?
                                 <div className='productQuantity'>
-                                    <button className={theme === 'dark' && 'colorDark'} onClick={decrementQualityHandler}>-</button>
+                                    <button className={theme === 'dark' ? 'colorDark' : undefined} onClick={decrementQualityHandler}>-</button>
                                     <strong>{productQuantity}</strong>
-                                    <button className={theme === 'dark' && 'colorDark'} onClick={incrementQualityHandler}>+</button>
+                                    <button className={theme === 'dark' ? 'colorDark' : undefined} onClick={incrementQualityHandler}>+</button>
                                 </div> : <button className={theme === 'dark' ? 'buttonDark addToBasketButton' : 'addToBasketButton'} onClick={handleAddToBaskdet}>Add to Basket <ShoppingCartIcon /></button>
                         }
-
 
                     </Grid>
                 </Grid>

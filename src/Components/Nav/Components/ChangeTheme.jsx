@@ -16,9 +16,8 @@ export default function ChangeTheme({ theme }) {
   return (
     <Grid item xs={1} lg={0.5} className='changeTheme'>
       <IconButton onClick={handleChangeTheme} >
-        {theme === 'dark' ?
-          <LightModeIcon /> :
-          <DarkModeIcon />
+        {
+          theme === 'dark' ? <LightModeIcon /> : <DarkModeIcon />
         }
       </IconButton>
     </Grid>

@@ -1,8 +1,13 @@
+@import "../../Mixin&Variables/Mixins.scss";
+
 .breadcrumbs {
   align-self: flex-start;
   margin-bottom: 1rem !important;
   margin-left: 5rem !important;
   margin-top: 1rem !important;
+  @include small {
+    margin-left: 4% !important;
+  }
   a {
     &:hover {
       text-decoration: underline !important;

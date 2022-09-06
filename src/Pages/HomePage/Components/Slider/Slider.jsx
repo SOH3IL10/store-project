@@ -2,10 +2,8 @@ import React from 'react'
 import Slide from './Slide';
 import './style.scss';
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/navigation";
-
 import { Autoplay } from "swiper";
 
 
@@ -34,7 +32,6 @@ export default function Slider() {
 
   return (
     <>
-
       <div className='slider'>
         <Swiper
           slidesPerView={1}

@@ -68,8 +68,6 @@ export default function ProfileSection() {
                                 <span>Sign Up</span>
                             </Link>
                         </div> : <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                            {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-                                <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
                             <Tooltip title="Account settings">
                                 <IconButton
                                     onClick={handleClick}

@@ -111,7 +111,6 @@ export default function MenuDrawer() {
                                 }
                             </List>
                         </Collapse>
-                        {/* <Divider /> */}
                         {
                             isAuthenticated ? <ListItem disablePadding onClick={handleLogOut}>
                                 <ListItemButton>
@@ -132,19 +131,7 @@ export default function MenuDrawer() {
                                     </ListItem>
                                 </Link>
                         }
-
                     </List>
-                    {/* <Divider />
-                    <List>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <Logout />
-                                </ListItemIcon>
-                                <ListItemText primary={'LogOut'} />
-                            </ListItemButton>
-                        </ListItem>
-                    </List> */}
                 </Box>
             </Drawer>
         </>
