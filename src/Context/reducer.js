@@ -9,6 +9,7 @@ export const actionTypes = {
     ADD_TO_BASKET: 'ADD_TO_BASKET',
     REMOVE_FROM_BASKET: 'REMOVE_FROM_BASKET',
     DECREMENT_PRODUCT_QUANITY: 'DECREMENT_PRODUCT_QUANITY',
+    REMOVE_BASKET: 'REMOVE_BASKET',
     SET_USER: 'SET_USER',
     REMOVE_USER: 'REMOVE_USER',
     SET_DARK_MODE: 'SET_DARK_MODE',
@@ -51,6 +52,12 @@ export function reducer(state, action) {
             return {
                 ...state,
                 basket: exist ? newBasket : [...state.basket, action.payload]
+            }
+
+        case actionTypes.REMOVE_BASKET:
+            return {
+                ...state,
+                basket: []
             }
 
         case actionTypes.SET_USER:

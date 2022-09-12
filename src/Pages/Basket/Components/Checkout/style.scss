@@ -17,13 +17,22 @@
   }
 }
 
-#payment-form {
+.paymentFormDark {
+  input {
+    border-bottom: 1px solid #fff !important;
+    color: #fff !important;
+  }
+}
+
+.payment-form {
   width: 30vw;
   margin: 3rem 0;
+  @include flex(null, column, null);
   @include extra-small {
     width: 80vw;
     min-width: initial;
   }
+
   min-width: 500px;
   align-self: center;
   box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
@@ -31,12 +40,59 @@
   border-radius: 7px;
   padding: 40px;
 
+  label {
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    outline: none;
+    color: #000;
+    height: 30px;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid rgba($color: #000, $alpha: 0.5);
+    transition: 0.3s;
+    &:focus {
+      border-bottom: 1px solid #5469d4 !important;
+    }
+  }
+
+  .accepted-cards {
+    #cards {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      img {
+        width: 65px;
+        height: 65px;
+      }
+    }
+  }
+
   #payment-element {
     margin-bottom: 24px;
   }
-  
+
+  .cardexp {
+    @include flex(null, row, space-between);
+    flex-wrap: wrap;
+    @include extra-small {
+      flex-direction: column !important;
+    }
+    .expmonth,
+    .expyear {
+      flex: 0.45;
+      @include flex(null, column, null);
+      @include extra-small {
+        flex: 1;
+      }
+    }
+  }
+
   #payment-message {
-    color: rgb(105, 115, 134);
+    color: rgb(255, 0, 0);
     font-size: 16px;
     line-height: 20px;
     padding-top: 12px;
@@ -52,13 +108,15 @@
     padding: 12px 16px;
     font-size: 16px;
     font-weight: 600;
+    outline: none;
     cursor: pointer;
     display: block;
     transition: all 0.2s ease;
     box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
     width: 100%;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background: rgba($color: #492bbe, $alpha: 0.9);
     }
 

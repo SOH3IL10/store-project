@@ -1,0 +1,15 @@
+@import "../../../../Mixin&Variables/Mixins.scss";
+
+.paymentSuccess {
+  @include flex(center, column, center);
+  line-height: 2;
+  margin-bottom: 3rem;
+  text-align: center;
+  svg.successIcon {
+    font-size: 7rem;
+  }
+
+  button {
+    @include buttonStyle;
+  }
+}

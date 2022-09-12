@@ -11,7 +11,7 @@ export default function SearchResultItems({ resultData }) {
                 <img src={resultData.image} alt={resultData.title} />
             </Grid>
             <Grid item xs={8} className='searchResultInfo'>
-                <Link to={`/products/${resultData.id}`}>
+                <Link to={`/products/${resultData.id}/${resultData.title}`}>
                     <strong className='resultItemName'>{resultData.title}</strong>
                 </Link>
                 <small className='resultItemRating'>

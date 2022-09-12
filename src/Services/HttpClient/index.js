@@ -1,1 +1,1 @@
-export {get, createPaymentIntent} from './HttpClient'
+export { get } from './HttpClient'
