@@ -48,6 +48,8 @@
     width: 50%;
     height: 100%;
     @include small {
+      justify-content: flex-start;
+      margin-top: 3rem;
       margin-left: 2rem;
       width: unset;
     }
