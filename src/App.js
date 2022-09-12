@@ -7,45 +7,20 @@ import Register from "./Pages/Register";
 import Categories from "./Pages/Categories";
 import { useUserData } from "@nhost/react";
 import { useDispatch, useStateContext } from "./Context/Context";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ChangePassword from "./Pages/Register/Components/ChangePassword";
 import Login from "./Pages/Register/Components/Login";
 import SignUp from "./Pages/Register/Components/SignUp";
 import ResetPassword from "./Pages/Register/Components/ResetPassword";
 import Checkout from "./Pages/Basket/Components/Checkout";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import PrivateRoute from "./Components/PrivateRoutes/PrivateRoute";
-import getBasketSubtotal from "./Utils/BasketTotal/getBasketTotal";
-import { createPaymentIntent } from "./Services/HttpClient";
 import { setDarkModeAction, setUserAction } from "./Context/actions";
-
-const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 
 function App() {
     const user = useUserData();
     const dispatch = useDispatch();
     const { theme, basket } = useStateContext();
-    const [clientSecret, setClientSecret] = useState("");
-
-    useEffect(() => {
-        const total = getBasketSubtotal(basket);
-
-        const data = { items: { id: "total", price: total } }
-
-        createPaymentIntent('/create-payment-intent', data,)
-            .then(data => setClientSecret(data.clientSecret))
-
-    }, [basket]);
-
-    const appearance = {
-        theme: theme === 'dark' ? 'night' : 'stripe',
-    };
-    const options = {
-        clientSecret,
-        appearance,
-    };
 
     const darkTheme = createTheme({
         palette: {
@@ -81,12 +56,7 @@ function App() {
                 <Route path="basket/checkout"
                     element={
                         <PrivateRoute>
-                            {
-                                clientSecret &&
-                                <Elements options={options} stripe={stripePromise}>
-                                    <Checkout />
-                                </Elements>
-                            }
+                            <Checkout />
                         </PrivateRoute>}>
                 </Route>
                 <Route path="products/:productID/:productName" element={<ProductsBlog />} />

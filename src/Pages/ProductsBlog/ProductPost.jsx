@@ -45,7 +45,15 @@ export default function ProductPost({ product, theme }) {
 
     useEffect(() => {
         function handleChangeZoomPosition() {
-            if (innerWidth <= 900) {
+            if (innerWidth <= 500) {
+                setProps({
+                    width: 300,
+                    height: 200,
+                    scale: 1.1,
+                    zoomPosition: 'bottom',
+                    offset: { vertical: 0, horizontal: 0 }
+                })
+            } else if (innerWidth <= 900) {
                 setProps({
                     width: 400,
                     height: 200,
@@ -53,9 +61,7 @@ export default function ProductPost({ product, theme }) {
                     zoomPosition: 'bottom',
                     offset: { vertical: 0, horizontal: 0 }
                 })
-            }
-
-            else {
+            } else {
                 setProps({
                     width: 400,
                     height: 200,

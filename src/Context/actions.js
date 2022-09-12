@@ -31,6 +31,12 @@ export function decrementProductQuanityAction(id) {
     }
 }
 
+export function removeBasket() {
+    return {
+        type: actionTypes.REMOVE_BASKET
+    }
+}
+
 export function setUserAction(user) {
     return {
         type: actionTypes.SET_USER,

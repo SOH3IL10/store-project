@@ -4,6 +4,9 @@
   @include flex(null , row , center);
   // align-items: center;
   height: 85vh;
+  @include extra-small{
+    height: 400px
+  };
   overflow: hidden;
 }
 
@@ -45,7 +48,7 @@
     width: 50%;
     height: 100%;
     @include small {
-      margin-left: 5rem;
+      margin-left: 2rem;
       width: unset;
     }
     h1 {

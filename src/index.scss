@@ -16,6 +16,18 @@ a{
   text-decoration: none;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .backgroundDark {
   background-color: #393E46 !important;
   color: #fff !important;
