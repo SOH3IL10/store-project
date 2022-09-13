@@ -4,11 +4,12 @@
   @include flex(null , row , center);
   // align-items: center;
   height: 85vh;
+  margin-bottom: 2rem;
   @include medium {
     height: 90vh;
   }
   @include extra-small{
-    height: 450px
+    height: 500px
   };
   overflow: hidden;
 }
