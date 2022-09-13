@@ -49,7 +49,7 @@ export default function SearchBox({ theme }) {
 
     return (
         <>
-            <Grid item xs={7} md={9} lg={8} ref={inputRef} className={theme === 'dark' ? 'backgroundDark navSearch' : 'navSearch'}>
+            <Grid item xs={9} md={10} lg={8} ref={inputRef} className={theme === 'dark' ? 'backgroundDark navSearch' : 'navSearch'}>
                 <input type="text" placeholder='Search products & trands' value={value} onChange={(e) => setValue(e.target.value)} />
                 <div className='navSearchIcon'>
                     {value.length > 0 ? <ClearIcon onClick={() => setValue('')} /> : <SearchIcon />}

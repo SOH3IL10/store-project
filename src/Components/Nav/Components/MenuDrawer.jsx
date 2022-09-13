@@ -28,6 +28,7 @@ import { useSignOut, useAuthenticationStatus } from '@nhost/react';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import { removeUserAction } from '../../../Context/actions';
+import Tooltip from '@mui/material/Tooltip';
 
 const categories = [
     { icon: <DvrIcon />, primary: 'electronics' },
@@ -61,9 +62,13 @@ export default function MenuDrawer() {
     return (
         <>
             <Grid item xs={1} sm={1} md={1} lg={0.5} className='navMenu'>
-                <IconButton onClick={() => toggleDrawer(true)}>
-                    <MenuIcon />
-                </IconButton>
+                <Tooltip title="Menu drawer">
+                    <IconButton onClick={() => toggleDrawer(true)}>
+                        <MenuIcon />
+                    </IconButton>
+                </Tooltip>
+
+
             </Grid>
 
             <Drawer

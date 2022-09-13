@@ -5,6 +5,7 @@ import { useDispatch } from '../../../Context/Context';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import { setDarkModeAction, setLightModeAction } from '../../../Context/actions';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function ChangeTheme({ theme }) {
   const dispatch = useDispatch();
@@ -15,11 +16,14 @@ export default function ChangeTheme({ theme }) {
 
   return (
     <Grid item xs={1} lg={0.5} className='changeTheme'>
-      <IconButton onClick={handleChangeTheme} >
-        {
-          theme === 'dark' ? <LightModeIcon /> : <DarkModeIcon />
-        }
-      </IconButton>
+      <Tooltip title={theme === 'dark' ? "Change to Light mode" : "Change to Dark mode"}>
+        <IconButton onClick={handleChangeTheme} >
+          {
+            theme === 'dark' ? <LightModeIcon /> : <DarkModeIcon />
+          }
+        </IconButton>
+      </Tooltip>
+
     </Grid>
   )
 }

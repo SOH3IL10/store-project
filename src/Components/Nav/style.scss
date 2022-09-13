@@ -5,10 +5,18 @@ $grayColor: rgb(146, 146, 146);
   width: 90% !important;
   @include flex(center, row, space-evenly);
   margin: 1.5rem auto;
+  @include medium {
+    margin-top: 0.5rem;
+  }
+}
+
+.navMenu {
+  order: 1;
 }
 
 .navLogo {
   text-align: center;
+  order: 2;
 }
 
 .navSearch {
@@ -16,6 +24,10 @@ $grayColor: rgb(146, 146, 146);
   background-color: #fff;
   padding: 1rem 2rem;
   color: $grayColor;
+  order: 3;
+  @include medium {
+    order: 4;
+  }
   input {
     width: 100%;
     border: none;
@@ -41,7 +53,22 @@ $grayColor: rgb(146, 146, 146);
   }
 }
 
+.navBasket {
+  order: 4;
+  @include medium {
+    order: 5;
+  }
+}
+
+.changeTheme {
+  order: 5;
+  @include medium {
+    order: 3;
+  }
+}
+
 .navRegister {
+  order: 6;
   @include flex(center, row, center);
   span {
     cursor: pointer;

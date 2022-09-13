@@ -7,6 +7,10 @@
     margin: 0 auto;
     padding: 2rem 5rem;
     background-color: #fff;
+    @include extra-small {
+      width: calc(85% - 2rem);
+      padding: 2rem;
+    }
     .checkoutInfoItem {
       @include flex(center, row, null);
       strong {

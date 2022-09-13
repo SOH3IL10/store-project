@@ -44,6 +44,8 @@ $grayColor: rgb(146, 146, 146);
     @include extra-small {
       justify-content: center;
       max-width: unset;
+      margin-bottom: 1.5rem;
+      height: 50px;
     }
   }
 

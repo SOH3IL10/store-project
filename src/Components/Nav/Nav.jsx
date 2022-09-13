@@ -9,6 +9,8 @@ import MenuDrawer from './Components/MenuDrawer';
 import SearchBox from './Components/SearchBox';
 import ChangeTheme from './Components/ChangeTheme';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function Nav() {
     const { basket, theme } = useStateContext();
@@ -19,7 +21,7 @@ export default function Nav() {
 
                 <MenuDrawer />
 
-                <Grid item xs={10} lg={1} className='navLogo'>
+                <Grid item xs={10} lg={2} className='navLogo'>
                     {/* lOGO */}
                     {/* <img src="" alt="" /> */}
                     <Link to={'/'}>
@@ -27,17 +29,21 @@ export default function Nav() {
                     </Link>
                 </Grid>
 
-                <ChangeTheme theme={theme} />
-                
                 <SearchBox theme={theme} />
 
                 <Grid item xs={1.5} md={1} lg={0.5} className='navBasket'>
-                    <Link to={'/basket'}>
-                        <Badge badgeContent={basket.length} color="secondary">
-                            <ShoppingCartIcon />
-                        </Badge >
-                    </Link>
+                    <Tooltip title="Basket" >
+                        <Link to={'/basket'}>
+                            <IconButton>
+                                <Badge badgeContent={basket.length} color="secondary">
+                                    <ShoppingCartIcon />
+                                </Badge >
+                            </IconButton>
+                        </Link>
+                    </Tooltip>
                 </Grid>
+
+                <ChangeTheme theme={theme} />
 
                 <ProfileSection />
             </Grid>

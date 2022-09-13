@@ -4,8 +4,11 @@
   @include flex(null , row , center);
   // align-items: center;
   height: 85vh;
+  @include medium {
+    height: 90vh;
+  }
   @include extra-small{
-    height: 400px
+    height: 450px
   };
   overflow: hidden;
 }
@@ -53,6 +56,13 @@
       margin-left: 2rem;
       width: unset;
       height: unset;
+    }
+    @include extra-small {
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      width: 95%;
+      height: 95%
     }
     h1 {
       font-weight: normal !important;

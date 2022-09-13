@@ -41,7 +41,7 @@ export default function BasketProductItem({ product, theme }) {
             </Grid>
 
             <Grid item xs={4} sm={1} className="productPrice">
-                <small>$</small>
+                {/* <small>$</small> */}
                 <strong>{currencyFormat(product.quantity * product.price)}</strong>
             </Grid>
 

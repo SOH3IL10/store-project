@@ -20,6 +20,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Grid from '@mui/material/Grid';
 import { removeUserAction, setDarkModeAction, setLightModeAction } from '../../../Context/actions';
+import LoginIcon from '@mui/icons-material/Login';
 
 export default function ProfileSection() {
     const { isAuthenticated, isLoading } = useAuthenticationStatus();
@@ -56,18 +57,18 @@ export default function ProfileSection() {
 
     return (
         <>
-            <Grid item xs={3.5} md={2} lg={1.5} className='navRegister'>
+            <Grid item xs={1.5} md={1} lg={0.5} className='navRegister'>
                 {isLoading ? <CircularProgress color={'inherit'} size={'1.5rem'} /> :
                     !isLogin ?
-                        <div>
+                        <Tooltip title="Login / Signup" >
                             <Link to='/register'>
-                                <span>Login</span>
+                                <IconButton>
+                                    <LoginIcon />
+                                </IconButton>
                             </Link>
-                            /
-                            <Link to='/register/signup'>
-                                <span>Sign Up</span>
-                            </Link>
-                        </div> : <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                        </Tooltip>
+                        :
+                        <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                             <Tooltip title="Account settings">
                                 <IconButton
                                     onClick={handleClick}
